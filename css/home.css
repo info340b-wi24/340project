@@ -126,5 +126,31 @@ nav a:active {
   
 }
 
+footer {
+  background-color: #0077CC;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer-content,
+.footer-bottom {
+  margin: auto;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.footer-bottom {
+  font-size: 0.8em;
+  margin-top: 10px;
+  border-top: 1px solid #0057a3;
+  padding-top: 10px;
+}
+
+footer p {
+  margin: 0;
+}
+
+
 
   
