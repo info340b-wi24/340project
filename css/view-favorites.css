@@ -126,5 +126,12 @@ nav a:active {
   
 }
 
+#page-title {
+  font-size: 5em; 
+    color: #0077CC;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
 
   
