@@ -1,29 +1,42 @@
 html {
     height: 100%;
   }
-  
+
   body {
-    font-family: Arial, sans-serif
+    font-family: "Roboto", sans-serif;
     margin: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    align-items: center; /* Center content horizontally */
     height: inherit;
-    background-color: #f0f8ff; 
   }
-  
+  .page-title {
+    font-size: 4em; /* Adjust the size as needed */
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: #0077CC; /* Example shade of blue */
+    font-weight: 1100; /* Makes the text bold */
+    border-bottom: 2px solid #0077CC; /* Solid line under the title */
+    padding-bottom: 10px; /* Space between text and line */
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: flex-start; /* Align content to the start */
+    align-items: center; /* Center content horizontally */
+    width: 100%; /* Full width */
+    padding: 20px;
+  }
+
   * {
     box-sizing: border-box;
   }
-  
-  main {
-    flex: 1;
-    display: flex; /* Ensure main is also a flex container */
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    padding: 20px; /* Add some padding */
-  }
-  
+
   .flex-container {
     display: flex;
     flex-wrap: wrap; /* Allow cards to wrap to next line */
@@ -44,10 +57,15 @@ html {
     flex: 0 0 250px; /* Do not grow, do not shrink, start at 250px wide */
     margin: 10px; /* Add some space between cards */
     padding: 0.5rem 1em;
-    background-color: white;
+    background-color: #f0f8ff; /* Light blue background */
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
   }
+
+  .card div p span.bold-text {
+    font-weight: bold;
+  }
+
   
   .card p {
     padding: .5rem 1rem;
@@ -57,13 +75,31 @@ html {
   .card h1{
     color: #0066cc; 
   }
+  .card h2{
+    font-weight: bold; 
+  }
+
+  .card .favorite-star {
+    position: relative;
+    top: 10px; /* Adjust as needed */
+    right: 10px; /* Adjust as needed */
+    font-size: 20px; /* Adjust as needed */
+    color: #ddd; /* Light gray for unfilled star */
+    cursor: pointer; /* Changes the cursor to indicate it's clickable */
+  }
   
-  
+  .card .favorite-star:hover, .favorite-star.favorited {
+  color: blue; /* Gold color for filled star */
+  }
+
+
   .card img {
-    width: 100%;
+    width: 100%;  /* maintains the width as per card's width */
+    height: 200px; /* fixed height */
+    object-fit: cover; /* this will ensure the image covers the area without distortion */
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+}
+
+
   
