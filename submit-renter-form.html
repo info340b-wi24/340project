@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Renter Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+
+<body class="container">
+    <nav>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="apartments.html">Apartments</a></li>
+            <li><a href="submit-renter-form.html">Renter Application Form</a></li>
+            <li><a href="submit-apartment-form.html">Submit Apartment Form</a></li>
+            <li><a href="view-favorites.html">Favorites</a></li>
+        </ul>
+    </nav>
+    
+    <header>
+        <h1>Renter Details Form</h1>
+        <p>This form is for the renter to submit their personal details.</p>
+    </header>
+
+    <main>
+        <section>
+            <form>
+                <header>
+                    <h2>Fill out your details below.</h2>
+                </header>
+
+                <div>
+                    <label for="name_input">Name: </label>
+                    <input type="text" name="name" id="name_input">
+                </div>
+
+                <div>
+                    <label for="age_input">Age: </label>
+                    <input type="text" name="age" id="age_input">
+                </div>
+
+                <div>
+                    <label for="grade_input">Grade: </label>
+                    <input type="text" name="grade" id="grade_input">
+                </div>
+
+                <div>
+                    <label for="gpa_input">GPA: </label>
+                    <input type="text" name="gpa" id="gpa_input">
+                </div>
+
+                <div>
+                    <label for="major_input">Major: </label>
+                    <input type="text" name="major" id="major_input">
+                </div>
+
+                <div>
+                    <label for="income_input">Monthly Income: </label>
+                    <input type="text" name="income" id="income_input">
+                </div>
+
+                <div>
+                    <label for="roommates_input">Okay with Roommates?: </label>
+                    <input type="checkbox" name="roommates" id="roommates_input">
+                </div>
+
+                <div>
+                    <label for="pets_input">Any Pets?: </label>
+                    <input type="checkbox" name="pets" id="pets_input">
+                </div>
+
+                <div>
+                    <label for="move_in_date_input">Preferred Move-in Date: </label>
+                    <input type="text" name="move_in_date" id="move_in_date_input">
+                </div>
+
+                <div>
+                    <label for="rental_history_input">Previous Rental History: </label>
+                    <textarea class="form-control" name="rental_history" id="rental_history_input"></textarea>
+                </div>
+
+                <button type="submit" aria-label="Submit">Post Application</button>
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>

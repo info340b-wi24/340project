@@ -1,7 +1,23 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: white; 
+font-family: Arial, sans-serif; 
+margin: 20px; 
+background-color: white;
+}
+    
+header {
+padding: .5rem 0;
+}
+    
+section {
+margin: .5rem 0; padding: .5rem; border: 1px solid gray;
+}
+    
+button {
+margin: .5rem 0; padding: .5rem 1rem;
+}
+    
+h1, h2 {
+color: #0066cc;
 }
 
 .apartment-info {
@@ -29,14 +45,15 @@ p {
     color: #333; 
 }
 
+nav {
+    text-align: center;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
     margin: 1;
-}
-
-nav {
-    text-align: center;
+    white-space: nowrap;
 }
 
 nav li {
@@ -56,4 +73,5 @@ nav a:active {
     text-decoration: underline;
     color: orange;
 }
+
 
