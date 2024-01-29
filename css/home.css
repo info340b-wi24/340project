@@ -80,7 +80,7 @@ html {
   }
 
   .card .favorite-star {
-    position: relative;
+    position: right;
     top: 10px; 
     right: 10px; 
     font-size: 20px; 

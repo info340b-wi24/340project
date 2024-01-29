@@ -1,7 +1,8 @@
 nav ul {
     list-style: none;
     padding: 0;
-    margin: 1;
+    margin: 0;
+    text-align: center; 
 }
 
 nav li {
@@ -11,6 +12,7 @@ nav li {
 
 nav a {
     color: black;
+    font-family: "Roboto", sans-serif;
     text-decoration: none;
     transition: color 0.25s ease-out, border-bottom 0.25s ease-out;
 }
