@@ -4,7 +4,7 @@ html {
 
 body {
     font-family: 'Poppins', Arial, sans-serif; 
-    margin: 20px;
+    margin: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -49,12 +49,12 @@ footer {
     color: white;
     text-align: center;
     padding: 20px 0;
+    width: 100%;
 }
 
 .footer-content,
 .footer-bottom {
     margin: auto;
-    width: 80%;
     max-width: 1000px;
 }
 
