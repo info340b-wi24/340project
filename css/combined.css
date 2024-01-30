@@ -50,12 +50,15 @@ footer {
     text-align: center;
     padding: 20px 0;
     width: 100%;
+    position: fixed; 
+    left: 0; 
+    bottom: 0; 
 }
 
 .footer-content,
 .footer-bottom {
     margin: auto;
-    max-width: 1000px;
+    max-width: 13000px;
 }
 
 .footer-bottom {
