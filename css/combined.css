@@ -238,3 +238,75 @@ main {
     padding-bottom: 10px; 
 }
 
+@media (max-width: 598px) {
+    body, html {
+        background-color: black;
+        color: white;
+    }
+
+    nav a {
+        color: white;
+    }
+
+    .page-title {
+        color: white;
+    }
+
+    header {
+        color: white;
+    }
+
+    .form-header h1, .form-header p {
+        color: white;
+    }
+
+    footer {
+        background-color: white;
+        color: black;
+    }
+
+    .welcome-title {
+        color: white;
+    }
+
+    .welcome-message {
+        color: white;
+    }
+}
+
+@media (min-width: 1500px) {
+    body, html {
+        background-color: purple;
+        color: gold;
+    }
+
+    nav a {
+        color: gold;
+    }
+
+    header {
+        color: gold;
+    }
+
+    .page-title {
+        color: gold;
+    }
+
+    .form-header h1, .form-header p {
+        color: gold;
+    }
+
+    footer {
+        background-color: gold;
+        color: purple;
+    }
+
+    .welcome-title {
+        color: gold;
+    }
+
+    .welcome-message {
+        color: gold;
+    }
+}
+
