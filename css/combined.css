@@ -282,4 +282,6 @@ main {
     }
 
     .welcome-message {
-        color
+        color: white;
+    }
+}
