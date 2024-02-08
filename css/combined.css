@@ -42,13 +42,13 @@ nav a:hover,
 nav a:focus,
 nav a:active {
     text-decoration: underline;
-    color: orange;
+    color: #0066cc;
 }
 
 /* Footer Styles */
 footer {
     font-family: 'Poppins', Arial, sans-serif; 
-    background-color: #0077CC;
+    background-color: #0066cc;
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -66,7 +66,7 @@ footer {
 .footer-bottom {
     font-size: 0.8em;
     margin-top: 1px;
-    border-top: 1px solid #0057a3;
+    border-top: 1px solid #0066cc;
     padding-top: 5px;
 }
 
@@ -82,9 +82,9 @@ footer p {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
-    color: #0077CC;
+    color: #0066cc;
     font-weight: 1100; 
-    border-bottom: 2px solid #0077CC; 
+    border-bottom: 2px solid #0066cc; 
     padding-bottom: 10px; 
 }
 
@@ -208,7 +208,7 @@ main {
 
 /* Welcome Section Styles */
 .welcome-title, .welcome-message {
-    color: #0077CC; 
+    color: #0066cc; 
     font-family: 'Poppins', Arial, sans-serif; 
     font-weight: bold; 
     text-align: center; 
@@ -230,9 +230,9 @@ main {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
-    color: #0077CC;
+    color: #0066cc;
     font-weight: 1100; 
-    border-bottom: 2px solid #0077CC; 
+    border-bottom: 2px solid #0066cc; 
     padding-bottom: 10px; 
     font-weight: bold; 
 }
@@ -244,7 +244,7 @@ main {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
-    color: #0077CC;
+    color: #0066cc;
     font-weight: 1100; 
     padding-bottom: 10px; 
 }
