@@ -4,25 +4,40 @@ html {
 }
 
 body {
-    font-family: 'Poppins', Arial, sans-serif; 
+    font-family: 'Century Gothic', Poppins, Arial, sans-serif; 
     margin: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: inherit;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
+    background-image: url('../img/blue.jpg'); /* Added background image */
+    background-size: cover;
+    background-attachment: fixed; /* Keeps the background image fixed while scrolling */
+    color: white; /* Changed text color to white */
 }
 
 * {
     box-sizing: border-box;
+    color: white; /* Changed text color to white for all elements */
 }
+
+/* Add this CSS to style the logo */
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    width: 180px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+}
+
 
 /* Navigation Styles */
 nav ul {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
     white-space: nowrap;
 }
@@ -33,7 +48,7 @@ nav li {
 }
 
 nav a {
-    color: black;
+    color: #b2b2b2;
     text-decoration: none;
     transition: color 0.25s ease-out, border-bottom 0.25s ease-out;
 }
@@ -41,17 +56,16 @@ nav a {
 nav a:hover, 
 nav a:focus,
 nav a:active {
-    text-decoration: underline;
-    color: #0066cc;
+    color: #ffffff;
 }
 
 /* Footer Styles */
 footer {
-    font-family: 'Poppins', Arial, sans-serif; 
-    background-color: #0066cc;
-    color: white;
+    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
+    background-color: #0E0945;
+    color: black;
     text-align: center;
-    padding: 10px 0;
+    padding: 15px 0;
     width: 100%;
     position: sticky; 
     bottom: 0; 
@@ -66,7 +80,7 @@ footer {
 .footer-bottom {
     font-size: 0.8em;
     margin-top: 1px;
-    border-top: 1px solid #0066cc;
+    border-top: 1px solid #ffffff00;
     padding-top: 5px;
 }
 
@@ -76,15 +90,15 @@ footer p {
 
 /* Page Title Styles */
 .page-title {
-    font-family: 'Poppins', Arial, sans-serif; 
+    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
     font-size: 4em; 
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
     width: 100%;
-    color: #0066cc;
+    color: #ffffff;
     font-weight: 1100; 
-    border-bottom: 2px solid #0066cc; 
+    border-bottom: 2px solid #ffffff; 
     padding-bottom: 10px; 
 }
 
@@ -117,11 +131,11 @@ main {
 }
 
 .card {
-    font-family: 'Poppins', Arial, sans-serif; 
+    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
     flex: 0 0 400px;
     margin: 10px; 
     padding: 0.5rem 1em;
-    background-color: #f0f8ff; 
+    background-color: #f0f8ffe2; 
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
 }
@@ -137,7 +151,7 @@ main {
 }
 
 .card h1, .card h2 {
-    color: #0066cc; 
+    color: #000274; 
     font-weight: bold; 
 }
 
@@ -147,9 +161,14 @@ main {
     top: 10px; 
     right: 10px; 
     font-size: 20px; 
-    color: #ddd; 
+    color: #888888; 
     cursor: pointer; 
 }
+
+.bold-text.black-text {
+    color: black;
+}
+
 
 .card .favorite-star:hover, .favorite-star.favorited {
     color: blue; 
@@ -176,7 +195,7 @@ main {
 .apartment-info h1, 
 .apartment-info h2, 
 .apartment-info h3 {
-    color: #0066cc; 
+    color: #000000; 
 }
 
 .apartment-info img {
@@ -208,14 +227,14 @@ main {
 
 /* Welcome Section Styles */
 .welcome-title, .welcome-message {
-    color: #0066cc; 
-    font-family: 'Poppins', Arial, sans-serif; 
+    color: #ffffff; 
+    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
     font-weight: bold; 
     text-align: center; 
 }
 
 .welcome-title {
-    font-size: 5em;
+    font-size: 7em;
 }
 
 .welcome-message {
@@ -227,12 +246,12 @@ main {
     font-family: 'Poppins', Arial, sans-serif;
     font-size: 4em; 
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 20px;
     width: 100%;
-    color: #0066cc;
+    color: #ffffff;
     font-weight: 1100; 
-    border-bottom: 2px solid #0066cc; 
+    border-bottom: 2px solid #ffffff; 
     padding-bottom: 10px; 
     font-weight: bold; 
 }
@@ -241,10 +260,10 @@ main {
     font-family: 'Poppins', Arial, sans-serif;
     font-size: 2em; 
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
     width: 100%;
-    color: #0066cc;
+    color: #ffffff;
     font-weight: 1100; 
     padding-bottom: 10px; 
 }
@@ -273,8 +292,8 @@ main {
     }
 
     footer {
-        background-color: white;
-        color: black;
+        background-color: #0E0945;
+        color: #0E0945;
     }
 
     .welcome-title {
