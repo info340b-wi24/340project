@@ -12,24 +12,25 @@ body {
     align-items: center;
     height: inherit;
     background-color: rgb(0, 0, 0);
-    background-image: url('../img/blue.jpg'); /* Added background image */
+    background-image: url('../img/blue.jpg');
     background-size: cover;
-    background-attachment: fixed; /* Keeps the background image fixed while scrolling */
-    color: white; /* Changed text color to white */
+    background-attachment: fixed;
+    color: white;
 }
 
 * {
     box-sizing: border-box;
-    color: white; /* Changed text color to white for all elements */
+    color: white; 
 }
 
-/* Add this CSS to style the logo */
+/* Logo Styles */
 .logo {
     position: absolute;
-    top: 20px;
-    left: 30px;
-    width: 180px; /* Adjust the width as needed */
-    height: auto; /* Maintain aspect ratio */
+    top: 50px; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180px;
+    height: auto;
 }
 
 
@@ -37,17 +38,19 @@ body {
 nav ul {
     list-style: none;
     padding: 0;
-    margin-top: 30px;
+    margin-top: 75px;
     text-align: center;
     white-space: nowrap;
 }
 
 nav li {
-    display: inline;
-    margin: 0 1rem;
+    display: block;
+    margin: 0;
 }
 
 nav a {
+    display: block;
+    padding: 10px;
     color: #b2b2b2;
     text-decoration: none;
     transition: color 0.25s ease-out, border-bottom 0.25s ease-out;
@@ -132,7 +135,7 @@ main {
 
 .card {
     font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
-    flex: 0 0 400px;
+    flex: 0 0 calc(100% - 20px);
     margin: 10px; 
     padding: 0.5rem 1em;
     background-color: #f0f8ffe2; 
@@ -169,7 +172,6 @@ main {
     color: black;
 }
 
-
 .card .favorite-star:hover, .favorite-star.favorited {
     color: blue; 
 }
@@ -184,7 +186,7 @@ main {
 
 /* Apartment Info Styles */
 .apartment-info {
-    max-width: 1200px; 
+    max-width: 100%; 
     margin: auto;
     background-color: #fff; 
     padding: 20px;
@@ -212,16 +214,14 @@ main {
 
 .apartment-info div {
     display: flex;
-    align-items: center;
+    flex-direction: column; 
 }
 
 .apartment-info div h2 {
-    flex: 0 0 30%;
-    margin-right: 5px;
+    margin-bottom: 5px; 
 }
 
 .apartment-info div p {
-    flex: 1;
     margin: 0;
 }
 
@@ -234,7 +234,7 @@ main {
 }
 
 .welcome-title {
-    font-size: 7em;
+    font-size: 4em; 
 }
 
 .welcome-message {
@@ -268,39 +268,52 @@ main {
     padding-bottom: 10px; 
 }
 
-/* Media Queries */
-@media (min-width: 598px) {
-    body, html {
-        background-color: black;
-        color: white;
+
+/* Media Query for Larger Screens (Desktop) */
+@media (min-width: 768px) {
+    .logo {
+        top: 20px; 
+        left: 20px; 
+        transform: none;
     }
 
-    nav a {
-        color: white;
+    nav ul {
+        display: flex;
+        margin-top: 20px; 
     }
 
-    .page-title {
-        color: white;
-    }
-
-    header {
-        color: white;
-    }
-
-    .form-header h1, .form-header p {
-        color: white;
-    }
-
-    footer {
-        background-color: #0E0945;
-        color: #0E0945;
+    nav li {
+        margin: 0 20px; 
     }
 
     .welcome-title {
-        color: white;
+        font-size: 5em; 
     }
 
-    .welcome-message {
-        color: white;
-    }
 }
+
+/* Media Query for Very Large Screens */
+@media (min-width: 1600px) {
+    .logo {
+        top: 30px;
+        left: 30px;
+    }
+
+    nav ul {
+        margin-top: 30px;
+    }
+
+    nav li {
+        margin: 0 30px;
+    }
+
+    .welcome-title {
+        font-size: 6em;
+    }
+
+    .card {
+        flex: 0 0 calc(25% - 20px);
+    }
+
+}
+
