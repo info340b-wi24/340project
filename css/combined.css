@@ -269,7 +269,7 @@ main {
 }
 
 /* Media Queries */
-@media (max-width: 598px) {
+@media (min-width: 598px) {
     body, html {
         background-color: black;
         color: white;
