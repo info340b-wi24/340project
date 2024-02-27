@@ -1,0 +1,29 @@
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #ffe7cd;
+}
+
+/* Add spacing around the content */
+section, ul, p {
+    margin-bottom: 30px;
+}
+
+/* Style the header tags */
+header h1, section header h2, section header h3 {
+    color: #361500;
+}
+
+/* Style the list items */
+ul li {
+    list-style-type: square;
+}
+
+/* Style the links */
+a {
+    color: #5500ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
