@@ -1,9 +1,8 @@
 import React from 'react';
-import Header from './Header'; // Assuming Header.js is in the same directory
-import Footer from './Footer'; // Assuming Footer.js is in the same directory
-import './Favorites.css'; // Import your CSS file
+import Header from './Header'; 
+import Footer from './Footer'; 
 
-function Favorites() {
+function ViewFavorites() {
     return (
         <div>
             <Header />
@@ -32,4 +31,4 @@ function Favorites() {
     );
 }
 
-export default Favorites;
+export default ViewFavorites;

@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import './Apartments.css';
 
 function Apartments() {
     return (

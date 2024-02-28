@@ -1,6 +1,5 @@
 // Homepage.js
 import React from 'react';
-import './css/combined.css'; // Adjust the import path as needed
 import Header from './Header'; 
 import Footer from './Footer'; 
 
@@ -16,6 +15,7 @@ function Homepage() {
           </p>
         </section>
       </main>
+
       <Footer /> {}
     </div>
   );

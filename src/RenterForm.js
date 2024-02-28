@@ -3,7 +3,7 @@ import './css/combined.css';
 import Header from './Header'; 
 import Footer from './Footer'; 
 
-function RenterDetailsForm() {
+function RenterForm() {
   return (
     <div>
       <Header /> {}
@@ -77,4 +77,4 @@ function RenterDetailsForm() {
   );
 }
 
-export default RenterDetailsForm;
+export default RenterForm;
