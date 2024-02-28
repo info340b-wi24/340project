@@ -45,11 +45,6 @@ function ApartmentForm() {
             </div>
 
             <div>
-              <label htmlFor="deposit_input">Price of Security Deposit: </label>
-              <input type="text" className="form-control" name="deposit" id="deposit_input" />
-            </div>
-
-            <div>
               <label htmlFor="roommates_input">Number of Current Roommates: </label>
               <input type="text" className="form-control" name="roommates" id="roommates_input" />
             </div>
@@ -58,22 +53,7 @@ function ApartmentForm() {
               <label htmlFor="pets_input">Pets Allowed: </label>
               <input type="checkbox" name="pets" id="pets_input" />
             </div>
-
-            <div>
-              <label htmlFor="appliances_input">List of Apartment Appliances: </label>
-              <textarea className="form-control" name="appliances" id="appliances_input"></textarea>
-            </div>
-
-            <div>
-              <label htmlFor="transportation_input">Proximity to Public Transportation: </label>
-              <textarea className="form-control" name="transportation" id="transportation_input"></textarea>
-            </div>
-
-            <div>
-              <label htmlFor="parking_input">Proximity to Parking: </label>
-              <textarea className="form-control" name="parking" id="parking_input"></textarea>
-            </div>
-
+     
             <button type="submit" aria-label="Submit" className="btn btn-primary">
               Submit
             </button>

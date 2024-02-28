@@ -271,6 +271,12 @@ main {
     padding-bottom: 10px; 
 }
 
+/* View Favorites Page Styles */
+.page-title {
+    font-weight: bold;
+}
+
+
 
 /* Media Query for Larger Screens (Desktop) */
 @media (min-width: 768px) {

@@ -38,7 +38,7 @@ function Apartments() {
             <Header />
             <main>
                 <h1 className="page-title">Find Apartments To Sublet Near You</h1>
-                <div className="filter-container">
+<div className="filter-container">
                     <label>
                         Rent:
                         <input
