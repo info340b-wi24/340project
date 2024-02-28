@@ -16,7 +16,14 @@ function Homepage() {
         </section>
       </main>
 
-      <Footer /> {}
+      <footer className="main-footer">
+        <div className="footer-content">
+          <p>© 2024 Sublet Central. All rights reserved.</p>
+        </div>
+        <div className="footer-bottom">
+          <p>Designed by Arushi, Anushka, Aryan, Josh</p>
+        </div>
+      </footer>
     </div>
   );
 }
