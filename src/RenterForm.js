@@ -12,9 +12,6 @@ function RenterForm() {
       </header>
 
       <main>
-        <a href="index.html">
-          <img src="img/sclogo.png" alt="Sublet Central Logo" className="logo" />
-        </a>
 
         <section>
           <form>

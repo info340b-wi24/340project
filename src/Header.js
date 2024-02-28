@@ -6,6 +6,9 @@ function Header() {
   return (
     <header>
       <nav>
+      <Link to="/">
+          <img src="sclogo.png" alt="Sublet Central Logo" className="logo" />
+        </Link>
         <ul>
         <li><Link to="/">Home</Link></li>
           <li><Link to="/apartments">Apartments</Link></li> 
