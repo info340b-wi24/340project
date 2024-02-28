@@ -7,7 +7,7 @@ function ApartmentForm() {
   return (
     <div>
       <Header /> {}
-      <header className="form-header">
+      <header className="form-header"> 
         <h1>Apartment Details Form</h1>
       </header>
 

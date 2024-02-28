@@ -6,7 +6,7 @@ import hubImage from './img/hub.jpg';
 import nolanImage from './img/nolan.jpg';
 import kelseyImage from './img/kelsey.jpg';
 import twelveImage from './img/twelve.jpg';
-
+import { Link } from 'react-router-dom'; 
 
 function Apartments() {
     const [maxRent, setMaxRent] = useState(2000); 
@@ -44,7 +44,7 @@ function Apartments() {
             <Header />
             <main>
                 <h1 className="page-title">Find Apartments To Sublet Near You</h1>
-<div className="filter-container">
+                <div className="filter-container">
                     <label>
                         Rent:
                         <input
@@ -61,14 +61,14 @@ function Apartments() {
                     <section className="apartments">
                         <div className="card-container">
                             {sortedApartments.map(apartment => (
-                                <a key={apartment.id} href={`apartment${apartment.id}.html`} className="card-link">
+                                <Link key={apartment.id} to={`/Apartment${apartment.id}`} className="card-link"> 
                                     <div className="card">
                                         <img src={apartment.image} alt={`This is an image of a bedroom at ${apartment.name}`} />
                                         <h2>{apartment.name}</h2>
                                         <p><span className="bold-text black-text">Rent:</span> ${apartment.rent} per month</p>
                                         <p><span className="bold-text black-text">Duration:</span> {apartment.duration}</p>
                                     </div>
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </section>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header'; 
-import Footer from './Footer'; 
+import Footer from './Footer';
+import standardImage from './img/standard.jpg';
 
 function ViewFavorites() {
     return (
@@ -8,7 +9,6 @@ function ViewFavorites() {
             <Header />
             <main>
                 <h1 className="page-title">View Your Favorites</h1> 
-                
                 <div className="flex-container">
                     <section className="apartments">
                         <div className="card-container">

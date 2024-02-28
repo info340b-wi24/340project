@@ -3,7 +3,8 @@ import HomePage from './Homepage';
 import Apartments from './Apartments'; 
 import ApartmentForm from './ApartmentForm'; 
 import RenterForm from './RenterForm'; 
-import ViewFavorites from './ViewFavorites'; 
+import ViewFavorites from './ViewFavorites';
+import Apartment1 from './apartment1' 
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -16,6 +17,7 @@ function App(props) {
         <Route path="/ApartmentForm" element={<ApartmentForm />} />
         <Route path="/RenterForm" element={<RenterForm />} />
         <Route path="/ViewFavorites" element={<ViewFavorites />} />
+        <Route path="/Apartment1" element={<Apartment1 />} />
         
         </Routes>
         

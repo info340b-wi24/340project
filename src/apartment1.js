@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header'; 
 import Footer from './Footer'; 
 
-function ApartmentInformation() {
+function Apartment1() {
   return (
     <html lang="en">
       <head>
@@ -39,11 +39,10 @@ function ApartmentInformation() {
           </div>
           <div>
             <h2>Amenities:</h2>
-            <ul>
-              <li>Swimming Pool</li>
-              <li>Gym</li>
-              <li>24/7 Security</li>
-            </ul>
+              <p>Swimming Pool</p>
+              <p>Gym</p>
+              <p>24/7 Security</p>
+  
           </div>
           <div>
             <h2>Duration:</h2>
@@ -56,4 +55,4 @@ function ApartmentInformation() {
   );
 }
 
-export default ApartmentInformation;
+export default Apartment1;
