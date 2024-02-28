@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header'; 
 import Footer from './Footer'; 
+import standardImage from './img/standard.jpg';
 
 function Apartment1() {
   return (
@@ -14,12 +15,12 @@ function Apartment1() {
         <link rel="stylesheet" type="text/css" href="css/combined.css" />
       </head>
       <body>
-        <Header /> {}
+        <Header />
         <div className="apartment-info">
           <h1>Apartment Information</h1>
           <h3>The Standard</h3>
           <div>
-            <img src="img/standard.jpg" alt="Apartment Picture" />
+            <img src={standardImage} alt="Apartment Picture" />
           </div>
           <div>
             <h2>Address:</h2>
@@ -39,17 +40,16 @@ function Apartment1() {
           </div>
           <div>
             <h2>Amenities:</h2>
-              <p>Swimming Pool</p>
-              <p>Gym</p>
-              <p>24/7 Security</p>
-  
+            <p>Swimming Pool</p>
+            <p>Gym</p>
+            <p>24/7 Security</p>
           </div>
           <div>
             <h2>Duration:</h2>
             <p>12 months</p>
           </div>
         </div>
-        <Footer /> {}
+        <Footer />
       </body>
     </html>
   );

@@ -15,7 +15,7 @@ function ViewFavorites() {
                             <a href="apartment1.html" className="card-link">    
                                 <div className="card">
                                     <i className="fas fa-star favorite-star"></i>
-                                    <img src="img/standard.jpg" alt="apartment 1 art" />
+                                    <img src={standardImage} alt="apartment 1 art" />
                                     <h1>1 Bed @ Standard</h1>
                                     <p><span className="bold-text black-text">Rent:</span> $1200 per month</p>
                                     <p><span className="bold-text black-text">Duration:</span> June - August 2024</p>                            
