@@ -13,9 +13,9 @@ function App(props) {
         <Routes>
         <Route path="/" element={<HomePage />} />  
         <Route path="/apartments" element={<Apartments />} /> 
-        <Route path="/submit-apartment-form.html" element={<ApartmentForm />} />
-        <Route path="/submit-renter-form.html" element={<RenterForm />} />
-        <Route path="/view-favorites.html" element={<ViewFavorites />} />
+        <Route path="/ApartmentForm" element={<ApartmentForm />} />
+        <Route path="/RenterForm" element={<RenterForm />} />
+        <Route path="/ViewFavorites" element={<ViewFavorites />} />
         
         </Routes>
         

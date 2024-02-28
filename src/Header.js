@@ -7,11 +7,11 @@ function Header() {
     <header>
       <nav>
         <ul>
-          <li><Link to="/">Home</Link></li>
+        <li><Link to="/">Home</Link></li>
           <li><Link to="/apartments">Apartments</Link></li> 
-          <li><a href="submit-renter-form.html">Renter Application Form</a></li>
-          <li><a href="submit-apartment-form.html">Submit Apartment Form</a></li>
-          <li><a href="view-favorites.html">Favorites</a></li>
+          <li><Link to="/RenterForm">Submit Renter Form</Link></li>
+          <li><Link to="/ApartmentForm">Submit Apartment Form</Link></li>
+          <li><Link to="/ViewFavorites">Favorites</Link></li>
         </ul>
       </nav>
     </header>

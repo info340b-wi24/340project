@@ -12,8 +12,7 @@ function ViewFavorites() {
                 <div className="flex-container">
                     <section className="apartments">
                         <div className="card-container">
-                            <a href="apartment1.html" className="card-link">
-                                {/* Card 1 */}
+                            <a href="apartment1.html" className="card-link">    
                                 <div className="card">
                                     <i className="fas fa-star favorite-star"></i>
                                     <img src="img/standard.jpg" alt="apartment 1 art" />
