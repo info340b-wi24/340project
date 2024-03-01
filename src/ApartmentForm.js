@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './css/combined.css'; 
 import Header from './Header'; 
 import Footer from './Footer'; 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function ApartmentForm() {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
   return (
     <div>
-      <Header /> {}
+      <Header />
       <header className="form-header"> 
         <h1>Apartment Details Form</h1>
       </header>
@@ -40,8 +45,29 @@ function ApartmentForm() {
             </div>
 
             <div>
-              <label htmlFor="duration_input">Duration of Stay: </label>
-              <input type="text" className="form-control" name="duration" id="duration_input" />
+              <label htmlFor="start_date_input">Start Date: </label>
+              <DatePicker
+                selected={startDate}
+                onChange={date => setStartDate(date)}
+                selectsStart
+                startDate={startDate}
+                endDate={endDate}
+                className="form-control"
+                id="start_date_input"
+              />
+            </div>
+            <div>
+              <label htmlFor="end_date_input">End Date: </label>
+              <DatePicker
+                selected={endDate}
+                onChange={date => setEndDate(date)}
+                selectsEnd
+                startDate={startDate}
+                endDate={endDate}
+                minDate={startDate}
+                className="form-control"
+                id="end_date_input"
+              />
             </div>
 
             <div>
@@ -60,10 +86,9 @@ function ApartmentForm() {
           </form>
         </section>
       </main>
-      <Footer /> {}
+      <Footer />
     </div>
   );
 }
 
 export default ApartmentForm;
-
