@@ -7,7 +7,6 @@ import ViewFavorites from './ViewFavorites';
 import Apartment1 from './apartment1' 
 import { Routes, Route } from 'react-router-dom';
 
-
 function App(props) {
     return (
       <div>
