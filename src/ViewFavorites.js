@@ -1,33 +1,29 @@
 import React from 'react';
-import Header from './Header'; 
-import Footer from './Footer';
 import standardImage from './img/standard.jpg';
+import { Link } from 'react-router-dom'; 
 
-function ViewFavorites() {
+function Favorites({ favoriteApartments }) {
     return (
         <div>
-            <Header />
-            <main>
-                <h1 className="page-title">View Your Favorites</h1> 
-                <div className="flex-container">
-                    <section className="apartments">
-                        <div className="card-container">
-                            <a href="apartment1.html" className="card-link">    
-                                <div className="card">
-                                    <i className="fas fa-star favorite-star"></i>
-                                    <img src={standardImage} alt="apartment 1 art" />
-                                    <h1>1 Bed @ Standard</h1>
-                                    <p><span className="bold-text black-text">Rent:</span> $1200 per month</p>
-                                    <p><span className="bold-text black-text">Duration:</span> June - August 2024</p>                            
+            <h1 className="page-title">Your Favorite Apartments</h1>
+            <div className="flex-container">
+                <section className="apartments">
+                    <div className="card-container">
+                        {favoriteApartments.map(apartment => (
+                            <div key={apartment.id} className="card">
+                                <div className="card-content">
+                                    <img src={apartment.image} alt={`A bedroom at ${apartment.name}`} />
+                                    <h2>{apartment.name}</h2>
+                                    <p>Rent: ${apartment.rent} per month</p>
+                                    <p>Duration: {apartment.duration}</p>
                                 </div>
-                            </a>
-                        </div>
-                    </section>
-                </div>
-            </main>
-            <Footer />
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }
 
-export default ViewFavorites;
+export default Favorites;

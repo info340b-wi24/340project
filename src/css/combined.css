@@ -1,10 +1,11 @@
-  /* General Styles */
-  html {
+/* General Styles */
+html {
     height: 100%;
 }
 
 body {
-    font-family: 'Century Gothic', Poppins, Arial, sans-serif; 
+    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
+    min-height: 100vh;
     margin: 0;
     box-sizing: border-box;
     display: flex;
@@ -33,8 +34,13 @@ body {
     height: auto;
 }
 
-
 /* Navigation Styles */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -45,7 +51,7 @@ nav ul {
 
 nav li {
     display: block;
-    margin: 0;
+    margin: 0; 
 }
 
 nav a {
@@ -64,33 +70,17 @@ nav a:active {
 
 /* Footer Styles */
 footer {
-    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
     background-color: #0E0945;
     color: black;
     text-align: center;
     padding: 15px 0;
-    position: sticky;
-    bottom: 0;
     width: 100vw;
-}
-
-.main-footer {
-    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
-    background-color: #0E0945;
-    color: black;
-    text-align: center;
-    padding: 15px 0;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
+    margin-bottom: 0;
 }
 
 .footer-content,
 .footer-bottom {
     margin: auto;
-    max-width: 13000px;
 }
 
 .footer-bottom {
@@ -106,8 +96,7 @@ footer p {
 
 /* Page Title Styles */
 .page-title {
-    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
-    font-size: 4em; 
+    font-size: 2.5em; 
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -129,15 +118,24 @@ main {
     padding: 20px;
 }
 
-/* Card Styles */
-.flex-container {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    align-items: flex-start; 
-    width: 100%; 
-    padding: 10px; 
+/* Homepage Styles */
+.welcome-section p:not(:first-of-type) {
+    font-size: 1.5em; 
+    margin-bottom: 10px; 
+    text-align: center; 
 }
+
+.welcome-section p:not(:first-of-type)::before {
+    content: attr(data-number) ". "; 
+    font-size: 2em;
+    font-weight: bold;
+    color: #ffffff; 
+}
+
+.welcome-section p:not(:first-of-type) span {
+    font-size: 1.2em; 
+}
+
 
 .card-container {
     display: flex;
@@ -147,14 +145,24 @@ main {
 }
 
 .card {
-    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
-    flex: 0 0 calc(100% - 20px);
+    width: 300px;
+    min-height: 400px; 
+    max-height: 400px; 
     margin: 10px; 
     padding: 0.5rem 1em;
     background-color: #f0f8ffe2; 
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16), 0 1px 3px rgba(0, 0, 0, 0.23);
+    text-decoration: none; 
 }
+
+.card-content {
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 
 /* Card Content Styles */
 .card div p span.bold-text {
@@ -171,28 +179,42 @@ main {
     font-weight: bold; 
 }
 
-/* Favorite Star Styles */
-.card .favorite-star {
-    position: right;
+/* Favorite star */
+.card .favorite-button {
+    position: absolute;
     top: 10px; 
     right: 10px; 
     font-size: 20px; 
-    color: #888888; 
+    color: black; 
     cursor: pointer; 
+    border: none; 
+    background: none; 
 }
 
-.bold-text.black-text {
-    color: black;
+.favorite-button:hover .favorite-star {
+    color: blue;
 }
 
-.card .favorite-star:hover, .favorite-star.favorited {
+.favorite-star {
+    font-size: 20px;
+    color: inherit; 
+    cursor: pointer;
+    transition: color 0.3s ease; 
+}
+
+.favorite-star:hover {
     color: blue; 
 }
 
+
+
+
+
+
 .card img {
-    width: 100%;  
+    width: 100%;
     height: 200px; 
-    object-fit: cover; 
+    object-fit: cover;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
@@ -241,13 +263,9 @@ main {
 /* Welcome Section Styles */
 .welcome-title, .welcome-message {
     color: #ffffff; 
-    font-family: 'Century Gothic', 'Poppins', Arial, sans-serif; 
+    font-size: 2.5em; 
     font-weight: bold; 
     text-align: center; 
-}
-
-.welcome-title {
-    font-size: 4em; 
 }
 
 .welcome-message {
@@ -257,7 +275,7 @@ main {
 /* Form Header Styles */
 .form-header h1 {
     font-family: 'Poppins', Arial, sans-serif;
-    font-size: 4em; 
+    font-size: 2.5em; 
     text-align: center;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -286,8 +304,6 @@ main {
     font-weight: bold;
 }
 
-
-
 /* Media Query for Larger Screens (Desktop) */
 @media (min-width: 768px) {
     .logo {
@@ -309,9 +325,20 @@ main {
         font-size: 5em; 
     }
 
+    .page-title {
+        font-size: 4em; 
+    }
+
+    .form-header h1 {
+        font-size: 4em; 
+    }
+
+    #hamburger-menu {
+        display: none;
+    }
 }
 
-/* Media Query for Very Large Screens */
+/* Media Query for  Large Screens */
 @media (min-width: 1600px) {
     .logo {
         top: 30px;
@@ -327,7 +354,15 @@ main {
     }
 
     .welcome-title {
-        font-size: 6em;
+        font-size: 7em; 
+    }
+
+    .page-title {
+        font-size: 6em; 
+    }
+
+    .form-header h1 {
+        font-size: 6em; 
     }
 
     .card {
@@ -338,4 +373,12 @@ main {
 
 .form-element {
     margin-bottom: 10px;
-  }
+}
+
+
+
+#fulldiv {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

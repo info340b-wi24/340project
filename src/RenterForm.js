@@ -6,7 +6,6 @@ import Footer from './Footer';
 function RenterForm() {
   return (
     <div>
-      <Header /> {}
       <header className="form-header">
         <h1>Renter Details Form</h1>
       </header>
@@ -69,7 +68,6 @@ function RenterForm() {
           </form>
         </section>
       </main>
-      <Footer /> {}
     </div>
   );
 }
