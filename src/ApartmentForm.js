@@ -89,7 +89,7 @@ const ApartmentForm = () => {
         <section>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="address_input">Apartment Address: </label>
+              <label htmlFor="address_input">Apartment Name: </label>
               <input type="text" className="form-control" name="address" id="address_input" value={formData.address} onChange={handleChange} />
             </div>
             <div>

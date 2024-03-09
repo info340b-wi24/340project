@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getDatabase, ref, get } from 'firebase/database';
 import { Link } from 'react-router-dom'; 
-
+import Favorites from './ViewFavorites'; 
 // Images
 import standardImage from './img/standard.jpg';
 import hubImage from './img/hub.jpg';
@@ -14,7 +14,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const Apartments = () => {
   const [apartments, setApartments] = useState([]);
-  const [maxRent, setMaxRent] = useState(2000); 
+  const [maxPrice, setMaxPrice] = useState(2000); 
   const [duration] = useState(null);
 
   useEffect(() => {
@@ -28,27 +28,27 @@ const Apartments = () => {
         });
       }
       setApartments(data);
-      console.log('Fetched data:', data); // Add this line to log out the fetched data
+      console.log('Fetched data:', data); 
     };
     fetchData();
   }, []);
 
   const filterApartments = (apartments) => {
     return apartments.filter(apartment => {
-        if (maxRent !== null && apartment.rent > maxRent) return false;
-        if (duration !== null && apartment.duration !== duration) return false;
-        return true;
+      if (maxPrice !== null && apartment.price > maxPrice) return false; 
+      if (duration !== null && apartment.duration !== duration) return false;
+      return true;
     });
   };
 
-  const sortApartmentsByRent = (apartments) => {
-    return apartments.slice().sort((a, b) => a.rent - b.rent);
+  const sortApartmentsByPrice = (apartments) => { 
+    return apartments.slice().sort((a, b) => a.price - b.price);
   };
-
+  
   const handleSliderChange = (event) => {
-    setMaxRent(parseInt(event.target.value));
+    setMaxPrice(parseInt(event.target.value)); 
   };
-
+  
   const toggleFavorite = (id) => {
     const updatedApartments = apartments.map(apartment => {
         if (apartment.id === id) {
@@ -57,11 +57,21 @@ const Apartments = () => {
         return apartment;
     });
     setApartments(updatedApartments);
-};
+  };
+
+  const favoriteApartments = apartments.filter(apartment => apartment.favorite);
 
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const month = date.getMonth() + 1; 
+    const day = date.getDate();
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  };
+  
   const filteredApartments = filterApartments(apartments);
-  const sortedApartments = sortApartmentsByRent(filteredApartments);
+  const sortedApartments = sortApartmentsByPrice(filteredApartments); 
 
   return (
     <div>
@@ -74,11 +84,11 @@ const Apartments = () => {
               type="range"
               min="0"
               max="2000"
-              value={maxRent}
+              value={maxPrice}
               onChange={handleSliderChange}
             />
           </label>
-          <p>Max Rent: ${maxRent}</p>
+          <p>Max Rent: ${maxPrice}</p>
         </div>
         <div className="flex-container">
           <section className="apartments">
@@ -92,15 +102,16 @@ const Apartments = () => {
                             <FontAwesomeIcon icon={faStar} />
                         </span>
                     </button>
-                    <h2>{apartment.name}</h2>
-                    <p><span className="bold-text black-text"></span>Rent: ${apartment.rent} per month</p>
-                    <p><span className="bold-text black-text"></span>Duration: {apartment.duration}</p>
+                    <h2>{apartment.address}</h2>
+                    <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
+                    <p>  <span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
                   </div> 
                 </Link>
               ))}
             </div>
           </section>
         </div>
+
       </main>
     </div>
   );

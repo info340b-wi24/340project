@@ -1,6 +1,4 @@
 import React from 'react';
-import standardImage from './img/standard.jpg';
-import { Link } from 'react-router-dom'; 
 
 function Favorites({ favoriteApartments }) {
     return (
@@ -12,7 +10,6 @@ function Favorites({ favoriteApartments }) {
                         {favoriteApartments.map(apartment => (
                             <div key={apartment.id} className="card">
                                 <div className="card-content">
-                                    <img src={apartment.image} alt={`A bedroom at ${apartment.name}`} />
                                     <h2>{apartment.name}</h2>
                                     <p>Rent: ${apartment.rent} per month</p>
                                     <p>Duration: {apartment.duration}</p>
@@ -27,3 +24,6 @@ function Favorites({ favoriteApartments }) {
 }
 
 export default Favorites;
+
+
+

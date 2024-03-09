@@ -147,7 +147,7 @@ main {
 .card {
     width: 300px;
     min-height: 400px; 
-    max-height: 400px; 
+    /* max-height: 400px;  */
     margin: 10px; 
     padding: 0.5rem 1em;
     background-color: #f0f8ffe2; 
@@ -187,8 +187,8 @@ main {
     font-size: 20px; 
     color: black; 
     cursor: pointer; 
-    border: none; 
-    background: none; 
+    border: 2px; 
+    background: pink; 
 }
 
 .favorite-button:hover .favorite-star {
@@ -197,18 +197,13 @@ main {
 
 .favorite-star {
     font-size: 20px;
-    color: inherit; 
+    color: white; 
     cursor: pointer;
-    transition: color 0.3s ease; 
 }
 
 .favorite-star:hover {
     color: blue; 
 }
-
-
-
-
 
 
 .card img {
