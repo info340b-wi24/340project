@@ -12,7 +12,7 @@ import twelveImage from './img/twelve.jpg';
 const Apartments = () => {
   const [apartments, setApartments] = useState([]);
   const [maxPrice, setMaxPrice] = useState(2000); 
-  const [selectedSeason, setSelectedSeason] = useState(null);
+  const [selectedSeason, setSelectedSeason] = useState(""); // Set initial state to empty string
   const [duration] = useState(null);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const Apartments = () => {
     return apartments.filter(apartment => {
       if (maxPrice !== null && apartment.price > maxPrice) return false; 
       if (duration !== null && apartment.duration !== duration) return false;
-      if (selectedSeason !== null) {
+      if (selectedSeason !== "") {
         const month = new Date(apartment.start_date).getMonth() + 1; 
         switch (selectedSeason) {
           case 'Spring':
@@ -55,6 +55,10 @@ const Apartments = () => {
 
   const handleSliderChange = (event) => {
     setMaxPrice(parseInt(event.target.value)); 
+  };
+
+  const handleSeasonChange = (event) => {
+    setSelectedSeason(event.target.value);
   };
 
   const toggleFavorite = async (id) => {
@@ -110,7 +114,7 @@ const Apartments = () => {
           {/* Dropdown for selecting season */}
           <label className="select-season-label">
             Select Season:
-            <select value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
+            <select value={selectedSeason} onChange={handleSeasonChange}>
               <option value="">All Seasons</option>
               <option value="Spring">Spring</option>
               <option value="Summer">Summer</option>

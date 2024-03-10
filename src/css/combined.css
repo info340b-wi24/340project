@@ -453,6 +453,19 @@ main {
   .black-text {
     color: black;
   }
+
+  select {
+    color: black; /* Adjust text color */
+    background-color: white; /* Adjust background color */
+    padding: 5px; /* Adjust padding */
+    margin: 5px 0; /* Adjust margin */
+}
+
+option {
+    color: black; /* Adjust text color */
+    background-color: white; /* Adjust background color */
+    padding: 5px; /* Adjust padding */
+}
   
 
 
