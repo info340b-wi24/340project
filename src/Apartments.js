@@ -103,7 +103,9 @@ const Apartments = () => {
               onChange={handleSliderChange}
             />
           </label>
-          <p>Max Rent: ${maxPrice}</p>
+          <label className="max-rent-label">
+            Max Rent: ${maxPrice}
+          </label>
 
           {/* Dropdown for selecting season */}
           <label className="select-season-label">
@@ -138,7 +140,7 @@ const Apartments = () => {
                         More Details
                       </Link>
                   </div>           
-            </div>
+                </div>
               ))}
             </div>
           </section>

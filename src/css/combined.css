@@ -429,21 +429,31 @@ main {
 
 .filter-container {
     display: flex;
-    align-items: center; 
-}
+    align-items: flex-end; /* Align items to the bottom */
+  }
   
-.rent-label,
-.filter,
-.select-season-label {
-    display: flex;
-    align-items: center; 
-    margin-bottom: 10px; 
-}
+  .rent-label,
+  .max-rent-label,
+  .select-season-label {
+    align-self: flex-end; /* Align each label to the bottom */
+    margin-bottom: 5px; /* Add some space between labels */
+  }
 
-.select-season-label {
-    margin-left: 100px; 
-    margin-top: -7px; 
-}
+  .max-rent-label {
+    margin-right: 30px;
+    margin-left: 10px;
+  }
+  
+  /* Additional styling for bold text */
+  .bold-text {
+    font-weight: bold;
+  }
+  
+  /* Additional styling for black text */
+  .black-text {
+    color: black;
+  }
+  
 
 
   
