@@ -191,8 +191,10 @@ main {
     background: pink; 
 }
 
-.favorite-button:hover .favorite-star {
-    color: blue;
+/* Apply :hover directly to .favorite-button */
+.favorite-button:hover {
+    background: #FC89AC;
+    ;
 }
 
 .favorite-star {
@@ -202,9 +204,9 @@ main {
 }
 
 .favorite-star:hover {
-    color: blue; 
-}
+    color: #FC89AC;
 
+}
 
 .card img {
     width: 100%;
@@ -214,9 +216,17 @@ main {
     border-top-right-radius: 10px;
 }
 
-.more-details-button {
+.more-details-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+    margin-top: auto; 
+  }
+  
+  .more-details-button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 80px;
     background-color: #007BFF;
     color: white;
     text-decoration: none;
@@ -225,28 +235,32 @@ main {
   }
   
   .more-details-button:hover {
-    background-color: #0056b3; 
-  }
-
-  .button-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+    background-color: #0056b3;
   }
 
 /* Apartment Info Styles */
 .apartment-info {
-    max-width: 100%; 
+    max-width: 100%;
     margin: auto;
-    background-color: #fff; 
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .apartment-name {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+.apartment-name {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #000000; /* Adjust the color as needed */
+    margin-bottom: 10px; /* Adjust the margin as needed */
 }
 
-.apartment-info h1, 
-.apartment-info h2, 
 .apartment-info h3 {
     color: #000000; 
 }

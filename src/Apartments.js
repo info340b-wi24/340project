@@ -62,6 +62,7 @@ const Apartments = () => {
         const updatedApartment = { ...apartment, favorite: !apartment.favorite };
         console.log(`Apartment ${id} is now ${updatedApartment.favorite ? 'favorited' : 'unfavorited'}`);
         
+        // Update the entire apartment object in the Firebase database
         updateFavoritedAttributeInDatabase(id, updatedApartment);
         
         return updatedApartment;
@@ -119,12 +120,12 @@ const Apartments = () => {
                   <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
                   <p>  <span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
   
-                  {/* More Details Button */}
-                  <Link to={`/apartment/${apartment.id}`} className="more-details-button">
-  <div className="button-wrapper">
-    More Details
-  </div>
-</Link>                </div>
+                  <div className="more-details-wrapper">
+                      <Link to={`/apartment/${apartment.id}`} className="more-details-button">
+                        More Details
+                      </Link>
+                  </div>           
+            </div>
               ))}
             </div>
           </section>

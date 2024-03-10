@@ -51,11 +51,12 @@ function Apartment1() {
 
   return (
     <div className="apartment-info">
-      <h2>Apartment Information</h2>
-      <h2>{apartmentData.name}</h2>
-      <div>
-        <img src={getImage()} alt="Apartment Picture" />
-      </div>
+    <div>
+      <h2 className="apartment-name">Ruru {apartmentData.name}</h2>
+    </div>
+    <div>
+      <img src={getImage()} alt="Apartment Picture" />
+    </div>
       <div>
         <p>{apartmentData.address}</p>
       </div>
