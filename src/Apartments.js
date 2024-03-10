@@ -35,7 +35,7 @@ const Apartments = () => {
       if (maxPrice !== null && apartment.price > maxPrice) return false; 
       if (duration !== null && apartment.duration !== duration) return false;
       if (selectedSeason !== null) {
-        const month = new Date(apartment.start_date).getMonth() + 1; // Adjust for zero-based index
+        const month = new Date(apartment.start_date).getMonth() + 1; 
         switch (selectedSeason) {
           case 'Spring':
             return month >= 3 && month <= 5;
@@ -63,7 +63,6 @@ const Apartments = () => {
         const updatedApartment = { ...apartment, favorite: !apartment.favorite };
         console.log(`Apartment ${id} is now ${updatedApartment.favorite ? 'favorited' : 'unfavorited'}`);
         
-        // Update the entire apartment object in the Firebase database
         updateFavoritedAttributeInDatabase(id, updatedApartment);
         return updatedApartment;
       }
@@ -94,7 +93,7 @@ const Apartments = () => {
       <main>
         <h1 className="page-title">Find Apartments To Sublet Near You</h1>
         <div className="filter-container">
-          <label>
+          <label className="rent-label">
             Rent:
             <input
               type="range"
@@ -107,7 +106,7 @@ const Apartments = () => {
           <p>Max Rent: ${maxPrice}</p>
 
           {/* Dropdown for selecting season */}
-          <label>
+          <label className="select-season-label">
             Select Season:
             <select value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
               <option value="">All Seasons</option>

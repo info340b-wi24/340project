@@ -421,10 +421,29 @@ main {
     margin-bottom: 10px;
 }
 
-
-
 #fulldiv {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
+
+.filter-container {
+    display: flex;
+    align-items: center; 
+}
+  
+.rent-label,
+.filter,
+.select-season-label {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 10px; 
+}
+
+.select-season-label {
+    margin-left: 50px; 
+    margin-top: -7px; 
+}
+
+
+  
