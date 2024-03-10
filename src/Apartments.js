@@ -62,7 +62,6 @@ const Apartments = () => {
         const updatedApartment = { ...apartment, favorite: !apartment.favorite };
         console.log(`Apartment ${id} is now ${updatedApartment.favorite ? 'favorited' : 'unfavorited'}`);
         
-        // Update the entire apartment object in the Firebase database
         updateFavoritedAttributeInDatabase(id, updatedApartment);
         
         return updatedApartment;

@@ -44,10 +44,8 @@ function Apartment1() {
   };
 
   const contactOwner = () => {
-    // Assuming the owner's email is stored in apartmentData.email
     const ownerEmail = apartmentData.email;
     
-    // You can open the default mail client with the following code
     window.location.href = `mailto:${ownerEmail}`;
   };
 

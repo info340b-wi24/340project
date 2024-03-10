@@ -1,11 +1,10 @@
-// Homepage.js
 import React from 'react';
 
 function Homepage() {
   return (
     <div>
       <main>
-        {/* Apply the welcome-section class to the section tag */}
+        {}
         <section className="welcome-section">
           <h1 className="welcome-title">Welcome to Sublet Central!</h1>
           <p className="welcome-message">
