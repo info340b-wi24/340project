@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getDatabase, ref, get } from 'firebase/database';
 import { Link } from 'react-router-dom'; 
 import Favorites from './ViewFavorites'; 
-// Images
 import standardImage from './img/standard.jpg';
 import hubImage from './img/hub.jpg';
 import nolanImage from './img/nolan.jpg';
@@ -10,6 +8,8 @@ import kelseyImage from './img/kelsey.jpg';
 import twelveImage from './img/twelve.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { getDatabase, ref, get, set } from 'firebase/database';
+
 
 
 const Apartments = () => {
@@ -48,17 +48,32 @@ const Apartments = () => {
   const handleSliderChange = (event) => {
     setMaxPrice(parseInt(event.target.value)); 
   };
+
+  const updateFavoritedAttributeInDatabase = (apartmentId, apartmentData) => {
+    const database = getDatabase();
+    const apartmentRef = ref(database, `apartments/${apartmentId}`);
+    set(apartmentRef, apartmentData);
+  };
   
-  const toggleFavorite = (id) => {
+
+  const toggleFavorite = async (id) => {
     const updatedApartments = apartments.map(apartment => {
-        if (apartment.id === id) {
-            return { ...apartment, favorite: !apartment.favorite };
-        }
-        return apartment;
+      if (apartment.id === id) {
+        const updatedApartment = { ...apartment, favorite: !apartment.favorite };
+        console.log(`Apartment ${id} is now ${updatedApartment.favorite ? 'favorited' : 'unfavorited'}`);
+        
+        // Update the entire apartment object in the Firebase database
+        updateFavoritedAttributeInDatabase(id, updatedApartment);
+        
+        return updatedApartment;
+      }
+      return apartment;
     });
+    alert('Apartment Favorited!');
     setApartments(updatedApartments);
   };
-
+  
+  
   const favoriteApartments = apartments.filter(apartment => apartment.favorite);
 
 
@@ -94,28 +109,32 @@ const Apartments = () => {
           <section className="apartments">
             <div className="card-container">
               {sortedApartments.map(apartment => (
-                <Link key={apartment.id} to={`/apartment/${apartment.id}`} className="card-link"> 
-                  <div className="card">
-                    <img src={getImage(apartment.id)} alt={`A bedroom at ${apartment.name}`} />
-                    <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
-                        <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
-                            <FontAwesomeIcon icon={faStar} />
-                        </span>
-                    </button>
-                    <h2>{apartment.address}</h2>
-                    <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
-                    <p>  <span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
-                  </div> 
-                </Link>
+                <div key={apartment.id} className="card">
+                  <img src={getImage(apartment.id)} alt={`A bedroom at ${apartment.name}`} />
+                  <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
+                    <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
+                      <FontAwesomeIcon icon={faStar} />
+                    </span>
+                  </button>
+                  <h2>{apartment.address}</h2>
+                  <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
+                  <p>  <span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
+  
+                  {/* More Details Button */}
+                  <Link to={`/apartment/${apartment.id}`} className="more-details-button">
+  <div className="button-wrapper">
+    More Details
+  </div>
+</Link>                </div>
               ))}
             </div>
           </section>
         </div>
-
       </main>
     </div>
   );
-};
+  
+              };
 
 export default Apartments;
 

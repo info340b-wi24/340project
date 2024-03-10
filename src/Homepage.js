@@ -12,13 +12,13 @@ function Homepage() {
             Your one-stop shop for finding a temporary apartment near you, according to your preference.
           </p>
           <p data-number="1">
-            Browse through apartments you like, according to rent, duration of stay, and location.
+            Fill out the form to add your apartment listing!
           </p>
           <p data-number="2">
-            Select your apartment of choice.
+            Find your apartment listing on the apartments page! 
           </p>
           <p data-number="3">
-            Contact the person who posted the apartment.
+            Favorite the apartment, view more details, or contact the owner!
           </p>
         </section>
       </main>

@@ -214,6 +214,27 @@ main {
     border-top-right-radius: 10px;
 }
 
+.more-details-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-out;
+  }
+  
+  .more-details-button:hover {
+    background-color: #0056b3; 
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
 /* Apartment Info Styles */
 .apartment-info {
     max-width: 100%; 
@@ -298,6 +319,22 @@ main {
 .page-title {
     font-weight: bold;
 }
+
+.contact-owner-button {
+    background-color: #FFDB58; 
+    padding: 10px 20px;
+    border: none;
+    color: #000; 
+    font-size: 16px;
+    margin-top: 20px; 
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-out;
+  }
+  
+  .contact-owner-button:hover {
+    background-color: #FFD700; 
+  }
 
 /* Media Query for Larger Screens (Desktop) */
 @media (min-width: 768px) {
