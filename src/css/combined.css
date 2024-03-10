@@ -466,7 +466,10 @@ option {
     background-color: white; /* Adjust background color */
     padding: 5px; /* Adjust padding */
 }
-  
+
+.react-datepicker__input-container input {
+    color: black;
+}
 
 
   
