@@ -89,6 +89,7 @@ const Apartments = () => {
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
   };
+<<<<<<< HEAD
   
   // Update getImage function to get image URL from apartment data
   const getImage = (apartment) => {
@@ -106,9 +107,31 @@ const Apartments = () => {
       return defaultImages[apartment.id] || standardImage; // Use the corresponding default image based on apartmentId
     }
   };
+=======
+>>>>>>> ae5f8947f68ddfaf0b4ace33ceff6c83d056b7b4
 
   const filteredApartments = filterApartments(apartments);
 
+  const apartmentCards = filteredApartments.map(apartment => (
+    <div key={apartment.id} className="card">
+      <img src={getImage(apartment.id)} alt={`A bedroom at ${apartment.name}`} />
+      <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
+        <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
+          <FontAwesomeIcon icon={faStar} />
+        </span>
+      </button>
+      <h2>{apartment.address}</h2>
+      <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
+      <p>  <span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
+
+      <div className="more-details-wrapper">
+          <Link to={`/apartment/${apartment.id}`} className="more-details-button">
+            More Details
+          </Link>
+      </div>           
+    </div>
+  ));
+  
   return (
     <div>
       <main>
@@ -143,6 +166,7 @@ const Apartments = () => {
         <div className="flex-container">
           <section className="apartments">
             <div className="card-container">
+<<<<<<< HEAD
               {filteredApartments.map(apartment => (
                 <div key={apartment.id} className="card">
                   <img src={getImage(apartment)} alt={`A bedroom at ${apartment.name}`} />
@@ -162,6 +186,9 @@ const Apartments = () => {
                   </div>           
                 </div>
               ))}
+=======
+              {apartmentCards}
+>>>>>>> ae5f8947f68ddfaf0b4ace33ceff6c83d056b7b4
             </div>
           </section>
         </div>
