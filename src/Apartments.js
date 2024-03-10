@@ -92,7 +92,7 @@ const Apartments = () => {
       <main>
         <h1 className="page-title">Find Apartments To Sublet Near You</h1>
         <div className="filter-container">
-          <label>
+          <label className="rent-label">
             Rent:
             <input
               type="range"
@@ -105,7 +105,7 @@ const Apartments = () => {
           <p>Max Rent: ${maxPrice}</p>
 
           {/* Dropdown for selecting season */}
-          <label>
+          <label className="select-season-label">
             Select Season:
             <select value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
               <option value="">All Seasons</option>
