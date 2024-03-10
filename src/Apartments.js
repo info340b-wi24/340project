@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
-import Favorites from './ViewFavorites'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { getDatabase, ref, get, set } from 'firebase/database';
 import standardImage from './img/standard.jpg';
 import hubImage from './img/hub.jpg';
 import nolanImage from './img/nolan.jpg';
 import kelseyImage from './img/kelsey.jpg';
 import twelveImage from './img/twelve.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { getDatabase, ref, get, set } from 'firebase/database';
-
-
 
 const Apartments = () => {
   const [apartments, setApartments] = useState([]);
   const [maxPrice, setMaxPrice] = useState(2000); 
+  const [selectedSeason, setSelectedSeason] = useState(null);
   const [duration] = useState(null);
 
   useEffect(() => {
@@ -28,7 +26,6 @@ const Apartments = () => {
         });
       }
       setApartments(data);
-      console.log('Fetched data:', data); 
     };
     fetchData();
   }, []);
@@ -37,24 +34,28 @@ const Apartments = () => {
     return apartments.filter(apartment => {
       if (maxPrice !== null && apartment.price > maxPrice) return false; 
       if (duration !== null && apartment.duration !== duration) return false;
+      if (selectedSeason !== null) {
+        const month = new Date(apartment.start_date).getMonth() + 1; // Adjust for zero-based index
+        switch (selectedSeason) {
+          case 'Spring':
+            return month >= 3 && month <= 5;
+          case 'Summer':
+            return month >= 6 && month <= 8;
+          case 'Autumn':
+            return month >= 9 && month <= 11;
+          case 'Winter':
+            return month === 12 || month <= 2;
+          default:
+            return true;
+        }
+      }
       return true;
     });
   };
 
-  const sortApartmentsByPrice = (apartments) => { 
-    return apartments.slice().sort((a, b) => a.price - b.price);
-  };
-  
   const handleSliderChange = (event) => {
     setMaxPrice(parseInt(event.target.value)); 
   };
-
-  const updateFavoritedAttributeInDatabase = (apartmentId, apartmentData) => {
-    const database = getDatabase();
-    const apartmentRef = ref(database, `apartments/${apartmentId}`);
-    set(apartmentRef, apartmentData);
-  };
-  
 
   const toggleFavorite = async (id) => {
     const updatedApartments = apartments.map(apartment => {
@@ -64,7 +65,6 @@ const Apartments = () => {
         
         // Update the entire apartment object in the Firebase database
         updateFavoritedAttributeInDatabase(id, updatedApartment);
-        
         return updatedApartment;
       }
       return apartment;
@@ -73,9 +73,11 @@ const Apartments = () => {
     setApartments(updatedApartments);
   };
   
-  
-  const favoriteApartments = apartments.filter(apartment => apartment.favorite);
-
+  const updateFavoritedAttributeInDatabase = (apartmentId, apartmentData) => {
+    const database = getDatabase();
+    const apartmentRef = ref(database, `apartments/${apartmentId}`);
+    set(apartmentRef, apartmentData);
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -86,7 +88,6 @@ const Apartments = () => {
   };
   
   const filteredApartments = filterApartments(apartments);
-  const sortedApartments = sortApartmentsByPrice(filteredApartments); 
 
   return (
     <div>
@@ -104,11 +105,24 @@ const Apartments = () => {
             />
           </label>
           <p>Max Rent: ${maxPrice}</p>
+
+          {/* Dropdown for selecting season */}
+          <label>
+            Select Season:
+            <select value={selectedSeason} onChange={(e) => setSelectedSeason(e.target.value)}>
+              <option value="">All Seasons</option>
+              <option value="Spring">Spring</option>
+              <option value="Summer">Summer</option>
+              <option value="Autumn">Autumn</option>
+              <option value="Winter">Winter</option>
+            </select>
+          </label>
         </div>
+
         <div className="flex-container">
           <section className="apartments">
             <div className="card-container">
-              {sortedApartments.map(apartment => (
+              {filteredApartments.map(apartment => (
                 <div key={apartment.id} className="card">
                   <img src={getImage(apartment.id)} alt={`A bedroom at ${apartment.name}`} />
                   <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
@@ -133,8 +147,7 @@ const Apartments = () => {
       </main>
     </div>
   );
-  
-              };
+};
 
 export default Apartments;
 
