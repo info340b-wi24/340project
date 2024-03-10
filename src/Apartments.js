@@ -12,7 +12,7 @@ import twelveImage from './img/twelve.jpg';
 const Apartments = () => {
   const [apartments, setApartments] = useState([]);
   const [maxPrice, setMaxPrice] = useState(2000); 
-  const [selectedSeason, setSelectedSeason] = useState(""); // Set initial state to empty string
+  const [selectedSeason, setSelectedSeason] = useState("");
   const [duration] = useState(null);
 
   useEffect(() => {
@@ -22,7 +22,9 @@ const Apartments = () => {
       const data = [];
       if (snapshot.exists()) {
         snapshot.forEach((childSnapshot) => {
-          data.push({ id: childSnapshot.key, ...childSnapshot.val() });
+          const apartmentData = childSnapshot.val();
+          const imageURL = apartmentData.imageURL; // Get image URL from apartment data
+          data.push({ id: childSnapshot.key, ...apartmentData, imageURL });
         });
       }
       setApartments(data);
@@ -65,8 +67,6 @@ const Apartments = () => {
     const updatedApartments = apartments.map(apartment => {
       if (apartment.id === id) {
         const updatedApartment = { ...apartment, favorite: !apartment.favorite };
-        console.log(`Apartment ${id} is now ${updatedApartment.favorite ? 'favorited' : 'unfavorited'}`);
-        
         updateFavoritedAttributeInDatabase(id, updatedApartment);
         return updatedApartment;
       }
@@ -90,6 +90,23 @@ const Apartments = () => {
     return `${month}/${day}/${year}`;
   };
   
+  // Update getImage function to get image URL from apartment data
+  const getImage = (apartment) => {
+    if (apartment && apartment.imageURL) {
+      return apartment.imageURL; // Return the URL of the uploaded image if available
+    } else {
+      // If no uploaded image is available, return a default image URL
+      const defaultImages = { 
+        standard: standardImage, 
+        hub: hubImage, 
+        nolan: nolanImage, 
+        kelsey: kelseyImage, 
+        twelve: twelveImage 
+      };
+      return defaultImages[apartment.id] || standardImage; // Use the corresponding default image based on apartmentId
+    }
+  };
+
   const filteredApartments = filterApartments(apartments);
 
   return (
@@ -111,7 +128,6 @@ const Apartments = () => {
             Max Rent: ${maxPrice}
           </label>
 
-          {/* Dropdown for selecting season */}
           <label className="select-season-label">
             Select Season:
             <select value={selectedSeason} onChange={handleSeasonChange}>
@@ -129,7 +145,7 @@ const Apartments = () => {
             <div className="card-container">
               {filteredApartments.map(apartment => (
                 <div key={apartment.id} className="card">
-                  <img src={getImage(apartment.id)} alt={`A bedroom at ${apartment.name}`} />
+                  <img src={getImage(apartment)} alt={`A bedroom at ${apartment.name}`} />
                   <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
                     <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
                       <FontAwesomeIcon icon={faStar} />
@@ -155,10 +171,3 @@ const Apartments = () => {
 };
 
 export default Apartments;
-
-const imageArray = [standardImage, hubImage, nolanImage, kelseyImage, twelveImage];
-
-const getImage = (id) => {
-  const randomIndex = Math.floor(Math.random() * imageArray.length);
-  return imageArray[randomIndex];
-};
