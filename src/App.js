@@ -31,7 +31,7 @@ function App(props) {
                     <Route path="/ViewFavorites" element={<ViewFavorites favoriteApartments={favoriteApartments} />} />
                     <Route path="/ApartmentDetail" element={<ApartmentDetail />} />
                     <Route path="/apartment/:id" element={<ApartmentDetail />} />
-                    {/* Catch-all route for 404 Not Found */}
+                    {}
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </div>

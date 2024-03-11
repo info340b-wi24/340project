@@ -1,4 +1,3 @@
-/* General Styles */
 html {
     height: 100%;
 }
@@ -24,7 +23,6 @@ body {
     color: white; 
 }
 
-/* Logo Styles */
 .logo {
     position: absolute;
     top: 50px; 
@@ -34,7 +32,6 @@ body {
     height: auto;
 }
 
-/* Navigation Styles */
 nav {
     display: flex;
     justify-content: center;
@@ -68,7 +65,6 @@ nav a:active {
     color: #ffffff;
 }
 
-/* Footer Styles */
 footer {
     background-color: #0E0945;
     color: black;
@@ -94,7 +90,6 @@ footer p {
     margin: 0;
 }
 
-/* Page Title Styles */
 .page-title {
     font-size: 2.5em; 
     text-align: center;
@@ -107,7 +102,6 @@ footer p {
     padding-bottom: 10px; 
 }
 
-/* Main Section Styles */
 main {
     flex: 1;
     display: flex;
@@ -118,7 +112,6 @@ main {
     padding: 20px;
 }
 
-/* Homepage Styles */
 .welcome-section p:not(:first-of-type) {
     font-size: 1.5em; 
     margin-bottom: 10px; 
@@ -163,7 +156,6 @@ main {
 }
 
 
-/* Card Content Styles */
 .card div p span.bold-text {
     font-weight: bold;
 }
@@ -178,7 +170,6 @@ main {
     font-weight: bold; 
 }
 
-/* Favorite star */
 .card .favorite-button {
     position: absolute;
     top: 10px; 
@@ -236,7 +227,6 @@ main {
     background-color: #0056b3;
   }
 
-/* Apartment Info Styles */
 .apartment-info {
     max-width: 100%;
     margin: auto;
@@ -278,7 +268,6 @@ main {
     margin: 0;
 }
 
-/* Welcome Section Styles */
 .welcome-title, .welcome-message {
     color: #ffffff; 
     font-size: 2.5em; 
@@ -290,7 +279,6 @@ main {
     font-size: 2em; 
 }
 
-/* Form Header Styles */
 .form-header h1 {
     font-family: 'Poppins', Arial, sans-serif;
     font-size: 2.5em; 
@@ -317,7 +305,6 @@ main {
     padding-bottom: 10px; 
 }
 
-/* View Favorites Page Styles */
 .page-title {
     font-weight: bold;
 }
@@ -338,7 +325,6 @@ main {
     background-color: #FFD700; 
   }
 
-/* Media Query for Larger Screens (Desktop) */
 @media (min-width: 1000px) {
     .logo {
         top: 20px; 
@@ -372,7 +358,6 @@ main {
     }
 }
 
-/* Media Query for  Large Screens */
 @media (min-width: 1600px) {
     .logo {
         top: 30px;
