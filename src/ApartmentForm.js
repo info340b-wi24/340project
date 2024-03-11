@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css';
 import { getDatabase, ref, push } from 'firebase/database';
-import { getStorage, ref as storageRef, uploadBytes } from 'firebase/storage';
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ApartmentForm = () => {
   const database = getDatabase();
@@ -11,20 +11,27 @@ const ApartmentForm = () => {
   const saveApartmentDataToFirebase = async (apartmentData) => {
     // Upload image to Firebase Storage
     const imageRef = storageRef(storage, `images/${apartmentData.image.name}`);
-    await uploadBytes(imageRef, apartmentData.image);
+    const uploadTask = uploadBytes(imageRef, apartmentData.image);
 
-    // Get download URL of the uploaded image
-    const imageURL = await imageRef.getDownloadURL();
+    try {
+      // Wait for the upload task to complete
+      await uploadTask;
 
-    // Save apartment data with image URL to Firebase Realtime Database
-    const apartmentWithImageURL = { ...apartmentData, image: imageURL };
-    push(ref(database, 'apartments'), apartmentWithImageURL)
-      .then(() => {
-        console.log('Apartment data saved successfully');
-      })
-      .catch((error) => {
-        console.error('Error saving apartment data:', error);
-      });
+      // Get download URL of the uploaded image
+      const imageURL = await getDownloadURL(imageRef);
+
+      // Save apartment data with image URL to Firebase Realtime Database
+      const apartmentWithImageURL = { ...apartmentData, image: imageURL };
+      push(ref(database, 'apartments'), apartmentWithImageURL)
+        .then(() => {
+          console.log('Apartment data saved successfully');
+        })
+        .catch((error) => {
+          console.error('Error saving apartment data:', error);
+        });
+    } catch (error) {
+      console.error('Error uploading image:', error);
+    }
   };
 
   const [formData, setFormData] = useState({
