@@ -9,7 +9,29 @@ import nolanImage from './img/nolan.jpg';
 import kelseyImage from './img/kelsey.jpg';
 import twelveImage from './img/twelve.jpg';
 
-const Apartments = () => {
+function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage }) {
+  return (
+    <div className="card">
+      <img src={getImage(apartment)} alt={`A bedroom at ${apartment.name}`} />
+      <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
+        <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
+          <FontAwesomeIcon icon={faStar} />
+        </span>
+      </button>
+      <h2>{apartment.address}</h2>
+      <p> Rent: ${apartment.price} per month</p>
+      <p>  Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
+
+      <div className="more-details-wrapper">
+        <Link to={`/apartment/${apartment.id}`} className="more-details-button">
+          More Details
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function Apartments() {
   const [apartments, setApartments] = useState([]);
   const [maxPrice, setMaxPrice] = useState(2000); 
   const [selectedSeason, setSelectedSeason] = useState("");
@@ -139,23 +161,13 @@ const Apartments = () => {
           <section className="apartments">
             <div className="card-container">
               {filteredApartments.map(apartment => (
-                <div key={apartment.id} className="card">
-                  <img src={getImage(apartment)} alt={`A bedroom at ${apartment.name}`} />
-                  <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
-                    <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
-                      <FontAwesomeIcon icon={faStar} />
-                    </span>
-                  </button>
-                  <h2>{apartment.address}</h2>
-                  <p> Rent: ${apartment.price} per month</p>
-                  <p>  Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
-  
-                  <div className="more-details-wrapper">
-                      <Link to={`/apartment/${apartment.id}`} className="more-details-button">
-                        More Details
-                      </Link>
-                  </div>           
-                </div>
+                <ApartmentCard
+                  key={apartment.id}
+                  apartment={apartment}
+                  toggleFavorite={toggleFavorite}
+                  formatDate={formatDate}
+                  getImage={getImage}
+                />
               ))}
             </div>
           </section>
@@ -163,6 +175,6 @@ const Apartments = () => {
       </main>
     </div>
   );
-};
+}
 
 export default Apartments;

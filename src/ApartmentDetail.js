@@ -8,9 +8,11 @@ import nolanImage from './img/nolan.jpg';
 import kelseyImage from './img/kelsey.jpg';
 import twelveImage from './img/twelve.jpg';
 
-const ApartmentDetail = () => {
+function ApartmentDetail  ()  {
   const [apartmentData, setApartmentData] = useState(null);
   const [apartmentImage, setApartmentImage] = useState(null);
+  const [error, setError] = useState(null);
+
 
   const { id } = useParams();
 
@@ -30,15 +32,17 @@ const ApartmentDetail = () => {
           const imageUrl = await getDownloadURL(imageRef);
           setApartmentImage(imageUrl);
         } catch (error) {
-          console.error('Error fetching image:', error.message);
+          setError('An error occurred while displaying the apartment image. Please try again later.');
         }
-      } else {
-        console.log('No data available');
-      }
+      } 
     };
 
     fetchData();
   }, [id]);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   if (!apartmentData) {
     return <div>Loading...</div>;

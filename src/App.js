@@ -9,7 +9,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
-function App(props) {
+function App() {
     const [favoriteApartments, setFavoriteApartments] = useState([]);
 
     const toggleFavorite = (id) => {
@@ -25,13 +25,12 @@ function App(props) {
             <div className="fulldiv">
                 <Routes>
                     <Route path="/" element={<HomePage />} />  
-                    <Route path="/apartments" element={<Apartments toggleFavorite={toggleFavorite} />} /> 
+                    <Route path="/apartments" element={<Apartments toggleFavorite={toggleFavorite} favoriteApartments={favoriteApartments} />} /> 
                     <Route path="/ApartmentForm" element={<ApartmentForm />} />
                     <Route path="/RenterForm" element={<RenterForm />} />
                     <Route path="/ViewFavorites" element={<ViewFavorites favoriteApartments={favoriteApartments} />} />
                     <Route path="/ApartmentDetail" element={<ApartmentDetail />} />
                     <Route path="/apartment/:id" element={<ApartmentDetail />} />
-                    {}
                     <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </div>

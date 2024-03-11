@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { getDatabase, ref, push } from 'firebase/database';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 
-const ApartmentForm = () => {
+function ApartmentForm  ()  {
   const database = getDatabase();
   const storage = getStorage();
 
