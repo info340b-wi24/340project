@@ -1,39 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getDatabase, ref, child, get } from 'firebase/database';
+
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'; 
+import Favorites from './ViewFavorites'; 
 import standardImage from './img/standard.jpg';
 import hubImage from './img/hub.jpg';
 import nolanImage from './img/nolan.jpg';
 import kelseyImage from './img/kelsey.jpg';
 import twelveImage from './img/twelve.jpg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { getDatabase, ref, get} from 'firebase/database';
 
-const imageArray = [standardImage, hubImage, nolanImage, kelseyImage, twelveImage];
 
-const getImage = () => {
-  const randomIndex = Math.floor(Math.random() * imageArray.length);
-  return imageArray[randomIndex];
-};
-
-function Apartment1() {
-  const { id } = useParams();
-  const [apartmentData, setApartmentData] = useState(null);
+const ViewFavorites = () => {
+  const [favoriteApartments, setFavoriteApartments] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const database = getDatabase();
-      const snapshot = await get(child(ref(database), `apartments/${id}`));
-      if (snapshot.exists()) {
-        setApartmentData(snapshot.val());
-      } else {
-        console.log('No data available');
-      }
-    };
-    fetchData();
-  }, [id]);
+      const snapshot = await get(ref(database, 'apartments'));
+      const data = [];
 
-  if (!apartmentData) {
-    return <div>Loading...</div>;
-  }
+      if (snapshot.exists()) {
+        snapshot.forEach((childSnapshot) => {
+          const apartmentData = { id: childSnapshot.key, ...childSnapshot.val() };
+
+          if (apartmentData.favorite) {
+            data.push(apartmentData);
+          }
+        });
+      }
+
+      setFavoriteApartments(data);
+      console.log('Fetched data:', data);
+    };
+
+    fetchData();
+  }, []);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -43,56 +46,34 @@ function Apartment1() {
     return `${month}/${day}/${year}`;
   };
 
-  const contactOwner = () => {
-    const ownerEmail = apartmentData.email;
-    
-    window.location.href = `mailto:${ownerEmail}`;
-  };
-
   return (
-    <div className="apartment-info">
-    <div>
-      <h2 className="apartment-name">Ruru {apartmentData.name}</h2>
-    </div>
-    <div>
-      <img src={getImage()} alt="Apartment Picture" />
-    </div>
-      <div>
-        <p>{apartmentData.address}</p>
-      </div>
-      <div>
-        <h3>Bedrooms:</h3>
-        <p>{apartmentData.bedrooms}</p>
-      </div>
-      <div>
-        <h3>Bathrooms:</h3>
-        <p>{apartmentData.bathrooms}</p>
-      </div>
-      <div>
-      <h3>Rent:</h3>
-      <p> ${apartmentData.price} per month</p>
-      </div>
-      <div>
-        <h3>Duration:</h3>
-        <p>  {formatDate(apartmentData.start_date)} - {formatDate(apartmentData.end_date)} </p>
-      </div>
-      <div>
-        <h3>Pets Allowed: </h3>
-        <p>{apartmentData.pets ? 'Yes' : 'No'}</p>
-      </div>
-        <div>
-        <h3>Number of Current Roommates:</h3>
-        <p>{apartmentData.roommates > 0 ? apartmentData.roommates : 'None'}</p>
-      </div>
-      <div>
-        {/* "Contact Owner" button */}
-        <button className="contact-owner-button" onClick={contactOwner}>
-          Contact Owner
-        </button>
+    <div> 
+        <h1 className="page-title">Your Favorite Apartments</h1>
+        <div className="flex-container">
+            <section className="apartments">
+                <div className="card-container">
+                    {favoriteApartments.map((apartment) => (
+                        <Link key={apartment.id} to={`/apartment/${apartment.id}`} className="card-link">
+                            <div className="card">
+                                <img src={getImage(apartment.id)} alt={`A bedroom at ${apartment.name}`} />
+                                <h2>{apartment.address}</h2>
+                                <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
+                                <p><span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </section>
         </div>
-
     </div>
   );
-}
+};
 
-export default Apartment1;
+export default ViewFavorites;
+
+const imageArray = [standardImage, hubImage, nolanImage, kelseyImage, twelveImage];
+
+const getImage = (id) => {
+  const randomIndex = Math.floor(Math.random() * imageArray.length);
+  return imageArray[randomIndex];
+};
