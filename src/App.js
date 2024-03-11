@@ -22,7 +22,7 @@ function App(props) {
     return (
         <div>
             <Header />
-            <div id="fulldiv">
+            <div className="fulldiv">
                 <Routes>
                     <Route path="/" element={<HomePage />} />  
                     <Route path="/apartments" element={<Apartments toggleFavorite={toggleFavorite} />} /> 

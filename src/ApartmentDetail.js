@@ -8,14 +8,6 @@ import nolanImage from './img/nolan.jpg';
 import kelseyImage from './img/kelsey.jpg';
 import twelveImage from './img/twelve.jpg';
 
-const imageArray = {
-  standard: standardImage,
-  hub: hubImage,
-  nolan: nolanImage,
-  kelsey: kelseyImage,
-  twelve: twelveImage
-};
-
 const ApartmentDetail = () => {
   const [apartmentData, setApartmentData] = useState(null);
   const [apartmentImage, setApartmentImage] = useState(null);
@@ -88,7 +80,7 @@ const ApartmentDetail = () => {
       <p className="address">{apartmentData.address}</p>
       </div>
       <div>
-        <img src={apartmentImage || getImage()} alt="Apartment Picture" />
+        <img src={apartmentImage || getImage()} alt={`A bedroom at ${apartmentData.address}`} />
       </div>
       <div>
         <h3>Bedrooms:</h3>

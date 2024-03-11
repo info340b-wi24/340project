@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { getDatabase, ref, get, set } from 'firebase/database';
-import { getStorage, ref as storageRef } from 'firebase/storage';
 import standardImage from './img/standard.jpg';
 import hubImage from './img/hub.jpg';
 import nolanImage from './img/nolan.jpg';
@@ -15,7 +14,6 @@ const Apartments = () => {
   const [maxPrice, setMaxPrice] = useState(2000); 
   const [selectedSeason, setSelectedSeason] = useState("");
   const [duration] = useState(null);
-  const storage = getStorage();
 
   useEffect(() => {
     const fetchData = async () => {
