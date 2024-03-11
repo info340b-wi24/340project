@@ -1,12 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; 
-import Favorites from './ViewFavorites'; 
-import standardImage from './img/standard.jpg';
-import hubImage from './img/hub.jpg';
-import nolanImage from './img/nolan.jpg';
-import kelseyImage from './img/kelsey.jpg';
-import twelveImage from './img/twelve.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { getDatabase, ref, get} from 'firebase/database';
@@ -55,7 +48,7 @@ const ViewFavorites = () => {
                     {favoriteApartments.map((apartment) => (
                         <Link key={apartment.id} to={`/apartment/${apartment.id}`} className="card-link">
                             <div className="card">
-                                <img src={getImage(apartment.id)} alt={`A bedroom at ${apartment.name}`} />
+                                <img src={apartment.image} alt={`A bedroom at ${apartment.name}`} />
                                 <h2>{apartment.address}</h2>
                                 <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
                                 <p><span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
@@ -70,10 +63,3 @@ const ViewFavorites = () => {
 };
 
 export default ViewFavorites;
-
-const imageArray = [standardImage, hubImage, nolanImage, kelseyImage, twelveImage];
-
-const getImage = (id) => {
-  const randomIndex = Math.floor(Math.random() * imageArray.length);
-  return imageArray[randomIndex];
-};

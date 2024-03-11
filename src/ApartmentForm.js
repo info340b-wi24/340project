@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css';
 import { getDatabase, ref, push } from 'firebase/database';
-import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getStorage, ref as storageRef, uploadBytes } from 'firebase/storage';
 
 const ApartmentForm = () => {
   const database = getDatabase();
@@ -11,13 +11,10 @@ const ApartmentForm = () => {
   const saveApartmentDataToFirebase = async (apartmentData) => {
     // Upload image to Firebase Storage
     const imageRef = storageRef(storage, `images/${apartmentData.image.name}`);
-    const uploadTask = uploadBytes(imageRef, apartmentData.image);
-
-    // Wait for the upload task to complete
-    await uploadTask;
+    await uploadBytes(imageRef, apartmentData.image);
 
     // Get download URL of the uploaded image
-    const imageURL = await getDownloadURL(imageRef);
+    const imageURL = await imageRef.getDownloadURL();
 
     // Save apartment data with image URL to Firebase Realtime Database
     const apartmentWithImageURL = { ...apartmentData, image: imageURL };
