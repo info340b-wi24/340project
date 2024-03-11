@@ -4,8 +4,8 @@ import Apartments from './Apartments';
 import ApartmentForm from './ApartmentForm'; 
 import RenterForm from './RenterForm'; 
 import ViewFavorites from './ViewFavorites';
-import Apartment1 from './apartment1'; 
-import { Routes, Route } from 'react-router-dom';
+import ApartmentDetail from './ApartmentDetail'; 
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -29,8 +29,10 @@ function App(props) {
                     <Route path="/ApartmentForm" element={<ApartmentForm />} />
                     <Route path="/RenterForm" element={<RenterForm />} />
                     <Route path="/ViewFavorites" element={<ViewFavorites favoriteApartments={favoriteApartments} />} />
-                    <Route path="/Apartment1" element={<Apartment1 />} />
-                    <Route path="/apartment/:id" element={<Apartment1 />} />
+                    <Route path="/ApartmentDetail" element={<ApartmentDetail />} />
+                    <Route path="/apartment/:id" element={<ApartmentDetail />} />
+                    {/* Catch-all route for 404 Not Found */}
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
             </div>
             <Footer />

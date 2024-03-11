@@ -147,7 +147,6 @@ main {
 .card {
     width: 300px;
     min-height: 400px; 
-    /* max-height: 400px;  */
     margin: 10px; 
     padding: 0.5rem 1em;
     background-color: #f0f8ffe2; 
@@ -191,7 +190,6 @@ main {
     background: pink; 
 }
 
-/* Apply :hover directly to .favorite-button */
 .favorite-button:hover {
     background: #FC89AC;
     ;
@@ -254,12 +252,7 @@ main {
     color: #000000;
     margin-bottom: 10px;
   }
-.apartment-name {
-    font-size: 2.5em;
-    font-weight: bold;
-    color: #000000; /* Adjust the color as needed */
-    margin-bottom: 10px; /* Adjust the margin as needed */
-}
+
 
 .apartment-info h3 {
     color: #000000; 
@@ -268,9 +261,7 @@ main {
 .apartment-info img {
     width: 100%;
     height: 200px; 
-    object-fit: cover; 
-    border-radius: 8px;
-    margin-bottom: 20px;
+    
 }
 
 .apartment-info p {
@@ -282,9 +273,6 @@ main {
     flex-direction: column; 
 }
 
-.apartment-info div h2 {
-    margin-bottom: 5px; 
-}
 
 .apartment-info div p {
     margin: 0;
@@ -429,14 +417,14 @@ main {
 
 .filter-container {
     display: flex;
-    align-items: flex-end; /* Align items to the bottom */
+    align-items: flex-end; 
   }
   
   .rent-label,
   .max-rent-label,
   .select-season-label {
-    align-self: flex-end; /* Align each label to the bottom */
-    margin-bottom: 5px; /* Add some space between labels */
+    align-self: flex-end;
+    margin-bottom: 5px; 
   }
 
   .max-rent-label {
@@ -444,27 +432,24 @@ main {
     margin-left: 10px;
   }
   
-  /* Additional styling for bold text */
-  .bold-text {
+
+  .apartment-info .address {
+    font-size: 2em; 
     font-weight: bold;
-  }
-  
-  /* Additional styling for black text */
-  .black-text {
-    color: black;
+    color: darkblue;
   }
 
   select {
-    color: black; /* Adjust text color */
-    background-color: white; /* Adjust background color */
-    padding: 5px; /* Adjust padding */
-    margin: 5px 0; /* Adjust margin */
+    color: black; 
+    background-color: white; 
+    padding: 5px; 
+    margin: 5px 0; 
 }
 
 option {
-    color: black; /* Adjust text color */
-    background-color: white; /* Adjust background color */
-    padding: 5px; /* Adjust padding */
+    color: black; 
+    background-color: white; 
+    padding: 5px; 
 }
 
 .react-datepicker__input-container input {
@@ -472,7 +457,7 @@ option {
 }
 
 .card-link {
-    text-decoration: none; /* Remove underline */
+    text-decoration: none; 
   }
   
 

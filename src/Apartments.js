@@ -72,7 +72,6 @@ const Apartments = () => {
       }
       return apartment;
     });
-    alert('Apartment Favorited!');
     setApartments(updatedApartments);
   };
   
@@ -92,9 +91,8 @@ const Apartments = () => {
   
   const getImage = (apartment) => {
     if (apartment && apartment.image) {
-      return apartment.image; // Return the URL of the uploaded image if available
+      return apartment.image; 
     } else {
-      // If no uploaded image is available, return a default image URL
       const defaultImages = { 
         standard: standardImage, 
         hub: hubImage, 
@@ -102,7 +100,7 @@ const Apartments = () => {
         kelsey: kelseyImage, 
         twelve: twelveImage 
       };
-      return defaultImages[apartment.id] || standardImage; // Use the corresponding default image based on apartmentId
+      return defaultImages[apartment.id] || standardImage; 
     }
   };
 
@@ -151,8 +149,8 @@ const Apartments = () => {
                     </span>
                   </button>
                   <h2>{apartment.address}</h2>
-                  <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
-                  <p>  <span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
+                  <p> Rent: ${apartment.price} per month</p>
+                  <p>  Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
   
                   <div className="more-details-wrapper">
                       <Link to={`/apartment/${apartment.id}`} className="more-details-button">

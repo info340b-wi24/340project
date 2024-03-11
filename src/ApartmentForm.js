@@ -9,18 +9,14 @@ const ApartmentForm = () => {
   const storage = getStorage();
 
   const saveApartmentDataToFirebase = async (apartmentData) => {
-    // Upload image to Firebase Storage
     const imageRef = storageRef(storage, `images/${apartmentData.image.name}`);
     const uploadTask = uploadBytes(imageRef, apartmentData.image);
 
     try {
-      // Wait for the upload task to complete
       await uploadTask;
 
-      // Get download URL of the uploaded image
       const imageURL = await getDownloadURL(imageRef);
 
-      // Save apartment data with image URL to Firebase Realtime Database
       const apartmentWithImageURL = { ...apartmentData, image: imageURL };
       push(ref(database, 'apartments'), apartmentWithImageURL)
         .then(() => {
@@ -87,7 +83,6 @@ const ApartmentForm = () => {
       end_date: formData.end_date.toISOString()
     };
     saveApartmentDataToFirebase(apartmentData);
-    alert('Apartment Details Submitted!');
   };
 
   return (
