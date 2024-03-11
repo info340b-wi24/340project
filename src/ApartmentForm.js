@@ -2,12 +2,26 @@ import React, { useState } from 'react';
 import DatePicker from 'react-datepicker'; 
 import 'react-datepicker/dist/react-datepicker.css';
 import { getDatabase, ref, push } from 'firebase/database';
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 const ApartmentForm = () => {
   const database = getDatabase();
+  const storage = getStorage();
 
-  const saveApartmentDataToFirebase = (apartmentData) => {
-    push(ref(database, 'apartments'), apartmentData)
+  const saveApartmentDataToFirebase = async (apartmentData) => {
+    // Upload image to Firebase Storage
+    const imageRef = storageRef(storage, `images/${apartmentData.image.name}`);
+    const uploadTask = uploadBytes(imageRef, apartmentData.image);
+
+    // Wait for the upload task to complete
+    await uploadTask;
+
+    // Get download URL of the uploaded image
+    const imageURL = await getDownloadURL(imageRef);
+
+    // Save apartment data with image URL to Firebase Realtime Database
+    const apartmentWithImageURL = { ...apartmentData, image: imageURL };
+    push(ref(database, 'apartments'), apartmentWithImageURL)
       .then(() => {
         console.log('Apartment data saved successfully');
       })
@@ -29,7 +43,6 @@ const ApartmentForm = () => {
     favorited: false,
     email: ''
   });
-  
 
   const handleStartDateChange = (date) => {
     setFormData({
@@ -42,7 +55,6 @@ const ApartmentForm = () => {
     setFormData({
       ...formData,
       end_date: date
-    
     });
   };
 
@@ -100,22 +112,14 @@ const ApartmentForm = () => {
               <input type="number" className="form-control" name="price" id="price_input" value={formData.price} onChange={handleChange} />
             </div>
             <div>
-            <div>
               <label htmlFor="roommates_input">Number of Current Roommates: </label>
               <input className="form-control" type="number" name="roommates" id="roommates_input" value={formData.roommates} onChange={handleChange} />
             </div>
-
             <div>
               <label htmlFor="email_input">Contact Email: </label>
-              <input
-                type="email"
-                className="form-control"
-                name="email"
-                id="email_input"
-                value={formData.email}
-                onChange={handleChange}
-              />
+              <input type="email" className="form-control" name="email" id="email_input" value={formData.email} onChange={handleChange} />
             </div>
+            <div>
               <label htmlFor="start_date_input">Start Date: </label>
               <DatePicker
                 selected={formData.start_date}
@@ -136,7 +140,6 @@ const ApartmentForm = () => {
                 minDate={formData.start_date}
               />
             </div>
-           
             <div>
               <label htmlFor="pets_input">Pets Allowed: </label>
               <input type="checkbox" name="pets" id="pets_input" checked={formData.pets} onChange={() => setFormData({...formData, pets: !formData.pets})} />
@@ -146,10 +149,6 @@ const ApartmentForm = () => {
               <input type="file" name="image" id="image_input" onChange={handleImageChange} />
             </div>
             <button type="submit" aria-label="Submit" className="btn btn-primary">Submit</button>        
-          
-
-         
-         
           </form>
         </section>
       </main>
