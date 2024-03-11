@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { getDatabase, ref, get, set } from 'firebase/database';
+import { getStorage, ref as storageRef } from 'firebase/storage';
 import standardImage from './img/standard.jpg';
 import hubImage from './img/hub.jpg';
 import nolanImage from './img/nolan.jpg';
@@ -12,8 +13,9 @@ import twelveImage from './img/twelve.jpg';
 const Apartments = () => {
   const [apartments, setApartments] = useState([]);
   const [maxPrice, setMaxPrice] = useState(2000); 
-  const [selectedSeason, setSelectedSeason] = useState(""); // Set initial state to empty string
+  const [selectedSeason, setSelectedSeason] = useState("");
   const [duration] = useState(null);
+  const storage = getStorage();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,8 +67,6 @@ const Apartments = () => {
     const updatedApartments = apartments.map(apartment => {
       if (apartment.id === id) {
         const updatedApartment = { ...apartment, favorite: !apartment.favorite };
-        console.log(`Apartment ${id} is now ${updatedApartment.favorite ? 'favorited' : 'unfavorited'}`);
-        
         updateFavoritedAttributeInDatabase(id, updatedApartment);
         return updatedApartment;
       }
@@ -89,29 +89,25 @@ const Apartments = () => {
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
   };
+  
+  const getImage = (apartment) => {
+    if (apartment && apartment.image) {
+      return apartment.image; // Return the URL of the uploaded image if available
+    } else {
+      // If no uploaded image is available, return a default image URL
+      const defaultImages = { 
+        standard: standardImage, 
+        hub: hubImage, 
+        nolan: nolanImage, 
+        kelsey: kelseyImage, 
+        twelve: twelveImage 
+      };
+      return defaultImages[apartment.id] || standardImage; // Use the corresponding default image based on apartmentId
+    }
+  };
 
   const filteredApartments = filterApartments(apartments);
 
-  const apartmentCards = filteredApartments.map(apartment => (
-    <div key={apartment.id} className="card">
-      <img src={getImage(apartment.id)} alt={`A bedroom at ${apartment.name}`} />
-      <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
-        <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
-          <FontAwesomeIcon icon={faStar} />
-        </span>
-      </button>
-      <h2>{apartment.address}</h2>
-      <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
-      <p>  <span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
-
-      <div className="more-details-wrapper">
-          <Link to={`/apartment/${apartment.id}`} className="more-details-button">
-            More Details
-          </Link>
-      </div>           
-    </div>
-  ));
-  
   return (
     <div>
       <main>
@@ -131,7 +127,6 @@ const Apartments = () => {
             Max Rent: ${maxPrice}
           </label>
 
-          {/* Dropdown for selecting season */}
           <label className="select-season-label">
             Select Season:
             <select value={selectedSeason} onChange={handleSeasonChange}>
@@ -147,7 +142,25 @@ const Apartments = () => {
         <div className="flex-container">
           <section className="apartments">
             <div className="card-container">
-              {apartmentCards}
+              {filteredApartments.map(apartment => (
+                <div key={apartment.id} className="card">
+                  <img src={getImage(apartment)} alt={`A bedroom at ${apartment.name}`} />
+                  <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
+                    <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
+                      <FontAwesomeIcon icon={faStar} />
+                    </span>
+                  </button>
+                  <h2>{apartment.address}</h2>
+                  <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
+                  <p>  <span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
+  
+                  <div className="more-details-wrapper">
+                      <Link to={`/apartment/${apartment.id}`} className="more-details-button">
+                        More Details
+                      </Link>
+                  </div>           
+                </div>
+              ))}
             </div>
           </section>
         </div>
@@ -157,10 +170,3 @@ const Apartments = () => {
 };
 
 export default Apartments;
-
-const imageArray = [standardImage, hubImage, nolanImage, kelseyImage, twelveImage];
-
-const getImage = (id) => {
-  const randomIndex = Math.floor(Math.random() * imageArray.length);
-  return imageArray[randomIndex];
-};
