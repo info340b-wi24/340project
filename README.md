@@ -8,7 +8,7 @@
 <body>
     <header>
         <h1>
-            Project Proposal
+            Sublet Central: The Future of Subletting 
         </h1>
     </header>
     <section> 
