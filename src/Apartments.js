@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { getDatabase, ref, get, set } from 'firebase/database';
-import standardImage from './img/standard.jpg';
-import hubImage from './img/hub.jpg';
-import nolanImage from './img/nolan.jpg';
-import kelseyImage from './img/kelsey.jpg';
-import twelveImage from './img/twelve.jpg';
 
 function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage }) {
   return (
@@ -112,16 +107,8 @@ function Apartments() {
   const getImage = (apartment) => {
     if (apartment && apartment.image) {
       return apartment.image; 
-    } else {
-      const defaultImages = { 
-        standard: standardImage, 
-        hub: hubImage, 
-        nolan: nolanImage, 
-        kelsey: kelseyImage, 
-        twelve: twelveImage 
-      };
-      return defaultImages[apartment.id] || standardImage; 
-    }
+    } 
+    
   };
 
   const filteredApartments = filterApartments(apartments);

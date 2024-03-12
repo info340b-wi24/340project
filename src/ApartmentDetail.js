@@ -53,7 +53,7 @@ function ApartmentDetail  ()  {
       <p className="address">{apartmentData.address}</p>
       </div>
       <div>
-        <img src={apartmentData.image} alt="Apartment Picture" />
+        <img src={apartmentData.image} />
       </div>
       <div>
         <h3>Bedrooms:</h3>
