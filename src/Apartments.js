@@ -96,7 +96,7 @@ function Apartments() {
     if (showFavoritedMessage) {
       timeout = setTimeout(() => {
         setShowFavoritedMessage(false);
-      }, 2000);
+      }, 1000);
     }
 
     return () => clearTimeout(timeout);
