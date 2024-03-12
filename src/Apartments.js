@@ -8,8 +8,11 @@ function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage }) {
   return (
     <div className="card">
       <img src={getImage(apartment)} alt={`A bedroom at ${apartment.name}`} />
-      <button className="favorite-button" onClick={() => toggleFavorite(apartment.id)}>
-        <span className={`fa-star ${apartment.favorite ? 'favorite-star favorited' : 'favorite-star'}`}>
+      <button
+        className={`favorite-button ${apartment.favorite ? 'favorited' : ''}`}
+        onClick={() => toggleFavorite(apartment.id)}
+      >
+        <span className="favorite-star">
           <FontAwesomeIcon icon={faStar} />
         </span>
       </button>
@@ -78,6 +81,18 @@ function Apartments() {
     setSelectedSeason(event.target.value);
   };
 
+  // const toggleFavorite = async (id) => {
+  //   const updatedApartments = apartments.map(apartment => {
+  //     if (apartment.id === id) {
+  //       const updatedApartment = { ...apartment, favorite: !apartment.favorite };
+  //       updateFavoritedAttributeInDatabase(id, updatedApartment);
+  //       return updatedApartment;
+  //     }
+  //     return apartment;
+  //   });
+  //   setApartments(updatedApartments);
+  // };
+
   const toggleFavorite = async (id) => {
     const updatedApartments = apartments.map(apartment => {
       if (apartment.id === id) {
@@ -89,6 +104,7 @@ function Apartments() {
     });
     setApartments(updatedApartments);
   };
+  
   
   const updateFavoritedAttributeInDatabase = (apartmentId, apartmentData) => {
     const database = getDatabase();

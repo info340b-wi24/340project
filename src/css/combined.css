@@ -1,3 +1,4 @@
+/* Global Styles */
 html {
     height: 100%;
 }
@@ -29,6 +30,7 @@ body {
     min-height: 100vh;
 }
 
+/* Header Styles */
 .logo {
     position: absolute;
     top: 50px; 
@@ -71,6 +73,7 @@ nav a:active {
     color: #ffffff;
 }
 
+/* Footer Styles */
 footer {
     background-color: #0E0945;
     color: black;
@@ -96,6 +99,7 @@ footer p {
     margin: 0;
 }
 
+/* Page Title Styles */
 .page-title {
     font-size: 2.5em; 
     text-align: center;
@@ -109,6 +113,7 @@ footer p {
     padding-bottom: 10px; 
 }
 
+/* Main Content Styles */
 main {
     flex: 1;
     display: flex;
@@ -119,6 +124,7 @@ main {
     padding: 20px;
 }
 
+/* Welcome Page Styles */
 .welcome-section p:not(:first-of-type) {
     font-size: 1.5em; 
     margin-bottom: 10px; 
@@ -146,6 +152,7 @@ main {
     font-size: 2em; 
 }
 
+/* Card Styles */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -194,12 +201,9 @@ main {
     cursor: pointer; 
     border: 2px; 
     background: pink; 
-    border-radius: 10px;
 }
 
-.favorite-button:hover {
-    background: #FC89AC;
-}
+
 
 .favorite-star {
     font-size: 20px;
@@ -207,9 +211,13 @@ main {
     cursor: pointer;
 }
 
+
 .favorite-button.favorited {
-    color: #6f00ff;
+    background: #8b008b; 
+    border-color: #8b008b; 
+    color: white; 
 }
+
 
 .card img {
     width: 100%;
@@ -245,6 +253,7 @@ main {
     text-decoration: none; 
 }
 
+/* Apartment Info Styles */
 .apartment-info {
     max-width: 100%;
     margin: auto;
@@ -289,9 +298,10 @@ main {
     color: darkblue;
 }
 
+/* Form Styles */
 .form-header h1 {
     font-family: 'Poppins', Arial, sans-serif;
-    font-size: 2.3em; 
+    font-size: 2.5em; 
     text-align: center;
     margin-top: 30px;
     margin-bottom: 20px;
@@ -323,6 +333,7 @@ main {
     color: black;
 }
 
+/* Contact Owner Button Styles */
 .contact-owner-button {
     background-color: #FFDB58; 
     padding: 10px 20px;
@@ -339,7 +350,8 @@ main {
     background-color: #FFD700; 
 }
 
-@media (min-width: 1000px) {
+/* Media Queries */
+@media (min-width: 1025px) {
     .logo {
         top: 20px; 
         left: 20px; 
@@ -365,10 +377,6 @@ main {
 
     .form-header h1 {
         font-size: 4em; 
-    }
-
-    #hamburger-menu {
-        display: none;
     }
 }
 
@@ -397,17 +405,15 @@ main {
     .form-header h1 {
         font-size: 6em; 
     }
-
-    .card {
-        flex: 0 0 calc(25% - 20px);
-    }
 }
 
+/* Filter Container Style */
 .filter-container {
     display: flex;
     align-items: flex-end; 
 }
 
+/* Label Styles */
 .rent-label,
 .max-rent-label,
 .select-season-label {
@@ -420,6 +426,7 @@ main {
     margin-left: 10px;
 }
 
+/* Select Styles */
 select {
     color: black; 
     background-color: white; 
@@ -427,6 +434,7 @@ select {
     margin: 5px 0; 
 }
 
+/* Option Styles */
 option {
     color: black; 
     background-color: white; 
