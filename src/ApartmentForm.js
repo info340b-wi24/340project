@@ -15,7 +15,6 @@ function ApartmentForm  ()  {
     const uploadTask = uploadBytes(imageRef, apartmentData.image);
     await uploadTask;
     navigate('/apartments');
-    window.location.reload();
 
     try {
       await uploadTask;
