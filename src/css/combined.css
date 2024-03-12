@@ -219,6 +219,10 @@ main {
     color: white; 
 }
 
+.favorited-message {
+    font-size: 3em; 
+    font-weight: bold; 
+  }
 
 .card img {
     width: 100%;
@@ -442,11 +446,6 @@ option {
     padding: 5px; 
 }
 
-.favorited-message {
-  font-size: 3em; 
-  font-weight: bold; 
-
-}
 
   
 
