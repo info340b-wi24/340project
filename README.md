@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="Arushi, Anushka, Aryan, Josh" content="your name">
     <meta name="Project Proposal" content="a website about our proposal">
-    <title>Project Proposal</title> 
 </head>
 <body>
     <header>
@@ -29,6 +28,11 @@
                 Problem/Data Domain
             </h3>
         </header>
+        <p>
+            
+We're creating SubletCentral to address the primary concerns young adults face when seeking housing: deciding on the ideal location and finding compatible roommates. Our aim is to establish ourselves as the primary housing platform for the 20 million college students across America. Initially, we're enabling college students to legally sublet the apartments they're leasing but not occupying over the summer to fellow students in need of short-term housing for internships.
+        </p>
+        
         <p>
             The general topic of our project is wanting to sublet and sublease housing in Seattle, with the focus generally being on University of Washington students. The main information technology problem in the space of subletting and subleasing is the overall lack of accessibility and a lack of a central platform in order to do so, and the majority of the time the tenants will have to negotiate these deals one-on-one with those interested, which is an inefficient process overall. Airbnb has tried to address the subletting space by offering <a target="_blank" href="https://www.airbnb.com/sublets">monthly rentals</a>, which works like a regular Airbnb stay but with longer-term rentals rather than staying for just a week or so, where users can have conversations with the tenants and leave reviews for other users to see. While this can succeed in certain cases, their greatest focus is on short-term rentals and will not fully be dedicated to the nuances of this aspect of housing, especially if this web app is concentrating on specifically University of Washington students and residents of the general Seattle region. This web app can also help with the problem of a lack of a positive relationship between the tenant and future residents, as the tenant can truly feel that their place is being left in the right hands with our solution.
         </p>
