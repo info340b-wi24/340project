@@ -26,7 +26,6 @@ function ApartmentForm  ()  {
     }
   };
   
-
   const [formData, setFormData] = useState({
     address: '',
     bedrooms: '',
@@ -91,60 +90,65 @@ function ApartmentForm  ()  {
       <main>
         <section>
           <form onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="address_input">Apartment Name: </label>
-              <input type="text" className="form-control" name="address" id="address_input" value={formData.address} onChange={handleChange} />
-            </div>
-            <div>
-              <label htmlFor="bedrooms_input">Number of Bedrooms: </label>
-              <input type="number" className="form-control" name="bedrooms" id="bedrooms_input" value={formData.bedrooms} onChange={handleChange} />
-            </div>
-            <div>
-              <label htmlFor="bathrooms_input">Number of Bathrooms: </label>
-              <input type="number" className="form-control" name="bathrooms" id="bathrooms_input" value={formData.bathrooms} onChange={handleChange} />
-            </div>
-            <div>
-              <label htmlFor="price_input">Price of Rent: </label>
-              <input type="number" className="form-control" name="price" id="price_input" value={formData.price} onChange={handleChange} />
-            </div>
-            <div>
-              <label htmlFor="roommates_input">Number of Current Roommates: </label>
-              <input className="form-control" type="number" name="roommates" id="roommates_input" value={formData.roommates} onChange={handleChange} />
-            </div>
-            <div>
-              <label htmlFor="email_input">Contact Email: </label>
-              <input type="email" className="form-control" name="email" id="email_input" value={formData.email} onChange={handleChange} />
-            </div>
-            <div>
-              <label htmlFor="start_date_input">Start Date: </label>
-              <DatePicker
-                selected={formData.start_date}
-                onChange={handleStartDateChange}
-                selectsStart
-                startDate={formData.start_date}
-                endDate={formData.end_date}
-              />
-            </div>
-            <div>
-              <label htmlFor="end_date_input">End Date: </label>
-              <DatePicker
-                selected={formData.end_date}
-                onChange={handleEndDateChange}
-                selectsEnd
-                startDate={formData.start_date}
-                endDate={formData.end_date}
-                minDate={formData.start_date}
-              />
-            </div>
-            <div>
-              <label htmlFor="pets_input">Pets Allowed: </label>
-              <input type="checkbox" name="pets" id="pets_input" checked={formData.pets} onChange={() => setFormData({...formData, pets: !formData.pets})} />
-            </div>
-            <div>
-              <label htmlFor="image_input">Upload Image: </label>
-              <input type="file" name="image" id="image_input" onChange={handleImageChange} />
-            </div>
-            <button type="submit" aria-label="Submit" className="btn btn-primary">Submit</button>        
+          <div>
+            <label htmlFor="address_input">Apartment Name: </label>
+            <input type="text" className="form-control" name="address" id="address_input" value={formData.address} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="bedrooms_input">Number of Bedrooms: </label>
+            <input type="number" className="form-control" name="bedrooms" id="bedrooms_input" value={formData.bedrooms} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="bathrooms_input">Number of Bathrooms: </label>
+            <input type="number" className="form-control" name="bathrooms" id="bathrooms_input" value={formData.bathrooms} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="price_input">Price of Rent: </label>
+            <input type="number" className="form-control" name="price" id="price_input" value={formData.price} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="roommates_input">Number of Current Roommates: </label>
+            <input className="form-control" type="number" name="roommates" id="roommates_input" value={formData.roommates} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="email_input">Contact Email: </label>
+            <input type="email" className="form-control" name="email" id="email_input" value={formData.email} onChange={handleChange} />
+          </div>
+          <div>
+            <label htmlFor="start_date_input">Start Date: </label>
+            <DatePicker
+              id="start_date_input"
+              selected={formData.start_date}
+              onChange={handleStartDateChange}
+              selectsStart
+              startDate={formData.start_date}
+              endDate={formData.end_date}
+              aria-label="Start Date"
+            />
+          </div>
+          <div>
+            <label htmlFor="end_date_input">End Date: </label>
+            <DatePicker
+              id="end_date_input"
+              selected={formData.end_date}
+              onChange={handleEndDateChange}
+              selectsEnd
+              startDate={formData.start_date}
+              endDate={formData.end_date}
+              minDate={formData.start_date}
+              aria-label="End Date"
+            />
+          </div>
+          <div>
+            <label htmlFor="pets_input">Pets Allowed: </label>
+            <input type="checkbox" name="pets" id="pets_input" checked={formData.pets} onChange={() => setFormData({...formData, pets: !formData.pets})} />
+          </div>
+          <div>
+            <label htmlFor="image_input">Upload Image: </label>
+            <input type="file" name="image" id="image_input" onChange={handleImageChange} />
+          </div>
+          <button type="submit" aria-label="Submit" className="btn btn-primary">Submit</button>
+          
           </form>
         </section>
       </main>

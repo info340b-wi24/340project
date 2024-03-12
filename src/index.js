@@ -5,9 +5,6 @@ import { createRoot } from 'react-dom/client';
 import './css/combined.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
-
-
-
 import { initializeApp } from "firebase/app";
 
 

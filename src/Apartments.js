@@ -189,6 +189,7 @@ function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage, onTogg
       <button
         className={`favorite-button ${apartment.favorite ? 'favorited' : ''}`}
         onClick={handleToggleFavorite}
+        aria-label="Favorite"
       >
         <span className="favorite-star">
           <FontAwesomeIcon icon={faStar} />
@@ -199,7 +200,7 @@ function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage, onTogg
       <p>  Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
 
       <div className="more-details-wrapper">
-        <Link to={`/apartment/${apartment.id}`} className="more-details-button">
+        <Link to={`/apartment/${apartment.id}`} className="more-details-button" aria-label="More Details">
           More Details
         </Link>
       </div>
