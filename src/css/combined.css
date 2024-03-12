@@ -442,7 +442,11 @@ option {
     padding: 5px; 
 }
 
+.favorited-message {
+  font-size: 3em; 
+  font-weight: bold; 
 
+}
 
   
 

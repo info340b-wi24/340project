@@ -4,36 +4,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { getDatabase, ref, get, set } from 'firebase/database';
 
-function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage }) {
-  return (
-    <div className="card">
-      <img src={getImage(apartment)} alt={`A bedroom at ${apartment.name}`} />
-      <button
-        className={`favorite-button ${apartment.favorite ? 'favorited' : ''}`}
-        onClick={() => toggleFavorite(apartment.id)}
-      >
-        <span className="favorite-star">
-          <FontAwesomeIcon icon={faStar} />
-        </span>
-      </button>
-      <h2>{apartment.address}</h2>
-      <p> Rent: ${apartment.price} per month</p>
-      <p>  Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
 
-      <div className="more-details-wrapper">
-        <Link to={`/apartment/${apartment.id}`} className="more-details-button">
-          More Details
-        </Link>
-      </div>
-    </div>
-  );
-}
 
 function Apartments() {
   const [apartments, setApartments] = useState([]);
   const [maxPrice, setMaxPrice] = useState(2000); 
   const [selectedSeason, setSelectedSeason] = useState("");
   const [duration] = useState(null);
+  const [showFavoritedMessage, setShowFavoritedMessage] = useState(false); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,17 +59,6 @@ function Apartments() {
     setSelectedSeason(event.target.value);
   };
 
-  // const toggleFavorite = async (id) => {
-  //   const updatedApartments = apartments.map(apartment => {
-  //     if (apartment.id === id) {
-  //       const updatedApartment = { ...apartment, favorite: !apartment.favorite };
-  //       updateFavoritedAttributeInDatabase(id, updatedApartment);
-  //       return updatedApartment;
-  //     }
-  //     return apartment;
-  //   });
-  //   setApartments(updatedApartments);
-  // };
 
   const toggleFavorite = async (id) => {
     const updatedApartments = apartments.map(apartment => {
@@ -128,6 +95,23 @@ function Apartments() {
   };
 
   const filteredApartments = filterApartments(apartments);
+
+  
+  useEffect(() => {
+    let timeout;
+    if (showFavoritedMessage) {
+      timeout = setTimeout(() => {
+        setShowFavoritedMessage(false);
+      }, 2000); 
+    }
+
+    return () => clearTimeout(timeout);
+  }, [showFavoritedMessage]);
+
+  const handleToggleFavorite = () => {
+    setShowFavoritedMessage(true);
+  };
+
 
   return (
     <div>
@@ -170,14 +154,58 @@ function Apartments() {
                   toggleFavorite={toggleFavorite}
                   formatDate={formatDate}
                   getImage={getImage}
+                  onToggleFavorite={handleToggleFavorite} 
                 />
               ))}
             </div>
           </section>
         </div>
+        
+          {}
+          {showFavoritedMessage && (
+  <div className="favorited-message">
+    Favorited!
+  </div>
+)}
+
+
       </main>
     </div>
   );
 }
+
+function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage, onToggleFavorite }) {
+  const handleToggleFavorite = async () => {
+    await toggleFavorite(apartment.id);
+    if (!apartment.favorite) {
+      onToggleFavorite();
+    }
+  };
+  
+
+  return (
+    <div className="card">
+      <img src={getImage(apartment)} alt={`A bedroom at ${apartment.name}`} />
+      <button
+        className={`favorite-button ${apartment.favorite ? 'favorited' : ''}`}
+        onClick={handleToggleFavorite}
+      >
+        <span className="favorite-star">
+          <FontAwesomeIcon icon={faStar} />
+        </span>
+      </button>
+      <h2>{apartment.address}</h2>
+      <p> Rent: ${apartment.price} per month</p>
+      <p>  Duration: {formatDate(apartment.start_date)} - {formatDate(apartment.end_date)} </p>
+
+      <div className="more-details-wrapper">
+        <Link to={`/apartment/${apartment.id}`} className="more-details-button">
+          More Details
+        </Link>
+      </div>
+    </div>
+  );
+}
+
 
 export default Apartments;
