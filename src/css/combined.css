@@ -201,6 +201,7 @@ main {
     cursor: pointer; 
     border: 2px; 
     background: pink; 
+    border-radius: 10px;
 }
 
 .favorite-button:hover {
@@ -213,8 +214,8 @@ main {
     cursor: pointer;
 }
 
-.favorite-star:hover {
-    color: #FC89AC;
+.favorite-button.favorited {
+    color: #6f00ff; /* Dark pink color */
 }
 
 .card img {
@@ -349,7 +350,7 @@ main {
 }
 
 /* Media Queries */
-@media (min-width: 1025px) {
+@media (min-width: 1000px) {
     .logo {
         top: 20px; 
         left: 20px; 
@@ -375,6 +376,10 @@ main {
 
     .form-header h1 {
         font-size: 4em; 
+    }
+
+    #hamburger-menu {
+        display: none;
     }
 }
 
@@ -402,6 +407,10 @@ main {
 
     .form-header h1 {
         font-size: 6em; 
+    }
+
+    .card {
+        flex: 0 0 calc(25% - 20px);
     }
 }
 

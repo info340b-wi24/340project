@@ -3,14 +3,19 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { getDatabase, ref, push } from 'firebase/database';
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { useNavigate } from 'react-router-dom';
 
 function ApartmentForm  ()  {
+  const navigate = useNavigate();
   const database = getDatabase();
   const storage = getStorage();
 
   const saveApartmentDataToFirebase = async (apartmentData) => {
     const imageRef = storageRef(storage, `images/${apartmentData.image.name}`);
     const uploadTask = uploadBytes(imageRef, apartmentData.image);
+    await uploadTask;
+    navigate('/apartments');
+    window.location.reload();
 
     try {
       await uploadTask;
