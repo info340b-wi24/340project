@@ -201,6 +201,7 @@ main {
     cursor: pointer; 
     border: 2px; 
     background: pink; 
+    border-radius: 40%;
 }
 
 
