@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { getDatabase, ref, get, set } from 'firebase/database';
 
-
-
 function Apartments() {
   const [apartments, setApartments] = useState([]);
-  const [maxPrice, setMaxPrice] = useState(2000); 
+  const [maxPrice, setMaxPrice] = useState(2000);
   const [selectedSeason, setSelectedSeason] = useState("");
   const [duration] = useState(null);
-  const [showFavoritedMessage, setShowFavoritedMessage] = useState(false); 
+  const [showFavoritedMessage, setShowFavoritedMessage] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,10 +28,10 @@ function Apartments() {
 
   const filterApartments = (apartments) => {
     return apartments.filter(apartment => {
-      if (maxPrice !== null && apartment.price > maxPrice) return false; 
+      if (maxPrice !== null && apartment.price > maxPrice) return false;
       if (duration !== null && apartment.duration !== duration) return false;
       if (selectedSeason !== "") {
-        const month = new Date(apartment.start_date).getMonth() + 1; 
+        const month = new Date(apartment.start_date).getMonth() + 1;
         switch (selectedSeason) {
           case 'Spring':
             return month >= 3 && month <= 5;
@@ -52,13 +50,12 @@ function Apartments() {
   };
 
   const handleSliderChange = (event) => {
-    setMaxPrice(parseInt(event.target.value)); 
+    setMaxPrice(parseInt(event.target.value));
   };
 
   const handleSeasonChange = (event) => {
     setSelectedSeason(event.target.value);
   };
-
 
   const toggleFavorite = async (id) => {
     const updatedApartments = apartments.map(apartment => {
@@ -71,8 +68,7 @@ function Apartments() {
     });
     setApartments(updatedApartments);
   };
-  
-  
+
   const updateFavoritedAttributeInDatabase = (apartmentId, apartmentData) => {
     const database = getDatabase();
     const apartmentRef = ref(database, `apartments/${apartmentId}`);
@@ -81,28 +77,26 @@ function Apartments() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    const month = date.getMonth() + 1; 
+    const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear();
     return `${month}/${day}/${year}`;
   };
-  
+
   const getImage = (apartment) => {
     if (apartment && apartment.image) {
-      return apartment.image; 
-    } 
-    
+      return apartment.image;
+    }
   };
 
   const filteredApartments = filterApartments(apartments);
 
-  
   useEffect(() => {
     let timeout;
     if (showFavoritedMessage) {
       timeout = setTimeout(() => {
         setShowFavoritedMessage(false);
-      }, 2000); 
+      }, 2000);
     }
 
     return () => clearTimeout(timeout);
@@ -112,6 +106,16 @@ function Apartments() {
     setShowFavoritedMessage(true);
   };
 
+  const apartmentCards = filteredApartments.map(apartment => (
+    <ApartmentCard
+      key={apartment.id}
+      apartment={apartment}
+      toggleFavorite={toggleFavorite}
+      formatDate={formatDate}
+      getImage={getImage}
+      onToggleFavorite={handleToggleFavorite}
+    />
+  ));
 
   return (
     <div>
@@ -146,29 +150,15 @@ function Apartments() {
 
         <div className="flex-container">
           <section className="apartments">
-            <div className="card-container">
-              {filteredApartments.map(apartment => (
-                <ApartmentCard
-                  key={apartment.id}
-                  apartment={apartment}
-                  toggleFavorite={toggleFavorite}
-                  formatDate={formatDate}
-                  getImage={getImage}
-                  onToggleFavorite={handleToggleFavorite} 
-                />
-              ))}
-            </div>
+            <div className="card-container">{apartmentCards}</div>
           </section>
         </div>
-        
-          {}
-          {showFavoritedMessage && (
-  <div className="favorited-message">
-    Favorited!
-  </div>
-)}
 
-
+        {showFavoritedMessage && (
+          <div className="favorited-message">
+            Favorited!
+          </div>
+        )}
       </main>
     </div>
   );
@@ -181,7 +171,6 @@ function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage, onTogg
       onToggleFavorite();
     }
   };
-  
 
   return (
     <div className="card">
@@ -206,6 +195,5 @@ function ApartmentCard({ apartment, toggleFavorite, formatDate, getImage, onTogg
     </div>
   );
 }
-
 
 export default Apartments;
