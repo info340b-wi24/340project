@@ -41,7 +41,7 @@ function ViewFavorites(props) {
         <img src={apartment.image} alt={`A bedroom at ${apartment.name}`} />
         <h2>{apartment.address}</h2>
         <p><span className="bold-text black-text"></span> Rent: ${apartment.price} per month</p>
-        {}
+        
         <p><span className="bold-text black-text"></span> Duration: {formatDate(apartment.start_date, props.dateFormat)} - {formatDate(apartment.end_date, props.dateFormat)} </p>
       </div>
     </Link>
