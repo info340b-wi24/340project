@@ -8,7 +8,6 @@ function Header() {
         <Link to="/"><img src="sclogo.png" alt="Sublet Central Logo" className="logo" /></Link>
         <ul>
           <li><Link to="/apartments">Explore Apartments</Link></li> 
-          <li><Link to="/RenterForm">Submit Renter Form</Link></li>
           <li><Link to="/ApartmentForm">Submit Apartment Listing</Link></li>
           <li><Link to="/ViewFavorites">View Favorite Apartments</Link></li>
         </ul>

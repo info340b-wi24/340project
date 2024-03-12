@@ -24,7 +24,6 @@ function ViewFavorites(props) {
       }
 
       setFavoriteApartments(data);
-      console.log('Fetched data:', data);
     };
 
     fetchData();

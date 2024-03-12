@@ -21,7 +21,6 @@ function ApartmentDetail  ()  {
 
         const storage = getStorage();
         const imageRef = storageRef(storage, `apartment-images/${id}`);
-        console.log('imageRef:', imageRef);
       }
     };
 

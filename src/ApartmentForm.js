@@ -11,28 +11,21 @@ function ApartmentForm  ()  {
   const storage = getStorage();
 
   const saveApartmentDataToFirebase = async (apartmentData) => {
-    const imageRef = storageRef(storage, `images/${apartmentData.image.name}`);
-    const uploadTask = uploadBytes(imageRef, apartmentData.image);
-    await uploadTask;
-    navigate('/apartments');
-
     try {
+      const imageRef = storageRef(storage, `images/${apartmentData.image.name}`);
+      const uploadTask = uploadBytes(imageRef, apartmentData.image);
       await uploadTask;
-
+  
       const imageURL = await getDownloadURL(imageRef);
-
       const apartmentWithImageURL = { ...apartmentData, image: imageURL };
-      push(ref(database, 'apartments'), apartmentWithImageURL)
-        .then(() => {
-          console.log('Apartment data saved successfully');
-        })
-        .catch((error) => {
-          console.error('Error saving apartment data:', error);
-        });
+  
+      await push(ref(database, 'apartments'), apartmentWithImageURL);
+  
+      navigate('/apartments');
     } catch (error) {
-      console.error('Error uploading image:', error);
     }
   };
+  
 
   const [formData, setFormData] = useState({
     address: '',
