@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="Arushi, Anushka, Aryan, Josh" content="your name">
+    <meta name="Project Proposal" content="a website about our proposal">
     <title>Project Proposal</title> 
 </head>
 <body>
